@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bhlve66jvy8o2"]
+
+[ext_resource type="Script" uid="uid://bkyf2s887wro0" path="res://player_body.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4flbx"]
+radius = 10.0
+height = 30.0
+
+[node name="Player" type="Node2D" unique_id=1709675525]
+
+[node name="PlayerBody" type="CharacterBody2D" parent="." unique_id=345442620]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody" unique_id=293915605]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_sh265")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="PlayerBody" unique_id=326610712]
+position = Vector2(0, -15)
+mesh = SubResource("CapsuleMesh_4flbx")
