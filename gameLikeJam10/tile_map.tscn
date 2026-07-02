@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cg211pusphqds"]
+
+[ext_resource type="Texture2D" uid="uid://booeh1w2fki5j" path="res://Assets/Art/Sprite-0003.png" id="1_7yhko"]
+[ext_resource type="Script" uid="uid://ewrtg87at87j" path="res://tile_map.gd" id="2_1n30v"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1n30v"]
+texture = ExtResource("1_7yhko")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_ykcdr"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_1n30v")
+
+[sub_resource type="BoxMesh" id="BoxMesh_1n30v"]
+size = Vector3(16, 16, 1)
+
+[node name="TileMap" type="TileMapLayer" unique_id=1326799902]
+tile_set = SubResource("TileSet_ykcdr")
+script = ExtResource("2_1n30v")
+
+[node name="Highlight" type="MeshInstance2D" parent="." unique_id=1314912433]
+modulate = Color(0, 1, 0, 0.10980392)
+mesh = SubResource("BoxMesh_1n30v")
