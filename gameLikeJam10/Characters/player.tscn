@@ -19,3 +19,5 @@ shape = SubResource("CapsuleShape2D_sh265")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=326610712]
 position = Vector2(0, -15)
 mesh = SubResource("CapsuleMesh_4flbx")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1141743126]

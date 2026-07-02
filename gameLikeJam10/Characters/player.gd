@@ -2,6 +2,16 @@ extends CharacterBody2D
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
+signal place_block(mouse_position, block)
+signal destroy_block(mouse_position)
+
+func _process(delta: float) -> void:
+	var mouse_position = get_local_mouse_position()
+	if(Input.is_action_pressed("Place")):
+		place_block.emit(mouse_position, 1)
+	elif(Input.is_action_pressed("Destroy")):
+		destroy_block.emit(mouse_position)
+		
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -9,7 +19,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
+	if Input.is_action_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
