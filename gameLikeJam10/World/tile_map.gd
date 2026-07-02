@@ -10,7 +10,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var mouse_position = local_to_map(get_local_mouse_position())
-	highlight.position = map_to_local(mouse_position)
+	highlight_block(mouse_position)
 	if(Input.is_action_pressed("Place")):
 		place_block(mouse_position,1)
 	elif(Input.is_action_pressed("Destroy")):
@@ -26,6 +26,4 @@ func destroy_block(mouse_position):
 		set_cell(mouse_position, -1, EMPTY_TILE)
 
 func highlight_block(mouse_position):
-	var highlight_position = local_to_map(mouse_position)
-	if(get_cell_atlas_coords(mouse_position) != EMPTY_TILE):
-		print("Highlight: " + str(highlight_position))
+	highlight.position = map_to_local(mouse_position)
