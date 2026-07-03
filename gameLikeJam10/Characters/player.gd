@@ -1,17 +1,15 @@
 extends CharacterBody2D
-
+class_name Player
 const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
-signal place_block(mouse_position, block)
-signal destroy_block(mouse_position)
+signal place_block(block)
+signal destroy_block(item)
 
 func _process(delta: float) -> void:
-	var mouse_position = get_local_mouse_position()
 	if(Input.is_action_pressed("Place")):
-		place_block.emit(mouse_position, 1)
+		place_block.emit(1)
 	elif(Input.is_action_pressed("Destroy")):
-		destroy_block.emit(mouse_position)
-		
+		destroy_block.emit(1)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

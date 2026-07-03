@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://8mqlsnp7uqw4"]
 
+[ext_resource type="Script" uid="uid://dkwo78qreb4ac" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bhlve66jvy8o2" path="res://Characters/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://cg211pusphqds" path="res://World/tile_map.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node2D" unique_id=1355193467]
+script = ExtResource("1_h2yge")
 
 [node name="Player" parent="." unique_id=1709675525 instance=ExtResource("1_ig7tw")]
 position = Vector2(304, 203)
 
 [node name="TileMap" parent="." unique_id=968644839 instance=ExtResource("2_0xm2m")]
+
+[connection signal="destroy_block" from="Player" to="." method="_on_player_destroy_block"]
+[connection signal="place_block" from="Player" to="." method="_on_player_place_block"]
