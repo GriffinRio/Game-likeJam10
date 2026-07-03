@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://tc5snuqau1t5"]
+
+[ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_phsam"]
+[ext_resource type="Texture2D" uid="uid://c6cj8cv0hrd61" path="res://Assets/Art/Sprite-0003.png" id="2_ebjtj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68t7s"]
+atlas = ExtResource("2_ebjtj")
+region = Rect2(28, 8, 14, 11)
+
+[resource]
+script = ExtResource("1_phsam")
+name = "Dirt"
+sprite = SubResource("AtlasTexture_68t7s")
+metadata/_custom_type_script = "uid://dde0u4wrgliw4"
