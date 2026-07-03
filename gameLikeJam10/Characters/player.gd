@@ -1,9 +1,14 @@
 extends CharacterBody2D
 class_name Player
-const SPEED = 100.0
-const JUMP_VELOCITY = -200.0
+
 signal place_block(block)
 signal destroy_block(item)
+
+const SPEED = 100.0
+const JUMP_VELOCITY = -200.0
+
+var inventory = [1,2,3,4,5,6,7,8,9,10]
+var equipped = 0
 
 func _process(delta: float) -> void:
 	if(Input.is_action_pressed("Place")):
@@ -29,3 +34,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func _input(event: InputEvent) -> void:
+	if(event.is_action_pressed("Switch_Item_Up")):
+		equipped = (equipped + 1) % 10
+		print(inventory[equipped])
+	elif(event.is_action_pressed("Switch_Item_Down")):
+		equipped = (equipped - 1) % 10
+		print(inventory[equipped])
