@@ -25,4 +25,6 @@ func place_block(mouse_position, block):
 
 func destroy_block(mouse_position):
 	if(tile_layer.get_cell_atlas_coords(mouse_position) != EMPTY_TILE):
+		var block: Block = tile_layer.get_cell_tile_data(mouse_position).get_custom_data("block")
+		print(block.name)
 		tile_layer.set_cell(mouse_position, -1, EMPTY_TILE)
