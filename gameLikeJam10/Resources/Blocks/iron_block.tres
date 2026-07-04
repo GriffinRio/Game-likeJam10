@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Block" format=3 uid="uid://bxcj5ufu3wfmg"]
+
+[ext_resource type="Resource" uid="uid://dsge0vpq37ocn" path="res://Resources/Items/iron.tres" id="1_5xn7y"]
+[ext_resource type="Script" uid="uid://dxhlyg6lcklxi" path="res://Resources/Templates/block.gd" id="1_mil4s"]
+
+[resource]
+script = ExtResource("1_mil4s")
+name = "Iron"
+drop = ExtResource("1_5xn7y")
+metadata/_custom_type_script = "uid://dxhlyg6lcklxi"

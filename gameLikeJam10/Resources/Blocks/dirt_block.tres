@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Block" format=3 uid="uid://d0qwmkc6e4rc8"]
+
+[ext_resource type="Resource" uid="uid://tc5snuqau1t5" path="res://Resources/Items/dirt.tres" id="1_j1y7f"]
+[ext_resource type="Script" uid="uid://dxhlyg6lcklxi" path="res://Resources/Templates/block.gd" id="1_l5wj1"]
+
+[resource]
+script = ExtResource("1_l5wj1")
+name = "Dirt"
+health = 200
+drop = ExtResource("1_j1y7f")
+metadata/_custom_type_script = "uid://dxhlyg6lcklxi"
