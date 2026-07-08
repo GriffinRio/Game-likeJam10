@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bhlve66jvy8o2"]
 
 [ext_resource type="Script" uid="uid://bkyf2s887wro0" path="res://Characters/player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://drsde1w8uxb1y" path="res://inventory.gd" id="2_eovys"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
 radius = 11.5
@@ -23,3 +24,6 @@ position = Vector2(0, -15)
 mesh = SubResource("CapsuleMesh_4flbx")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1141743126]
+
+[node name="Inventory" type="Node2D" parent="." unique_id=547418861]
+script = ExtResource("2_eovys")

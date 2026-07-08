@@ -14,3 +14,5 @@ position = Vector2(304, 203)
 
 [connection signal="destroy_block" from="Player" to="." method="_on_player_destroy_block"]
 [connection signal="place_block" from="Player" to="." method="_on_player_place_block"]
+[connection signal="block_destroyed" from="TileMap" to="." method="_on_tile_map_block_destroyed"]
+[connection signal="block_placed" from="TileMap" to="." method="_on_tile_map_block_placed"]
