@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_wfpd5")
 name = "Stone"
-health = 100
+health = 150
 drop = ExtResource("1_4qaum")
 metadata/_custom_type_script = "uid://dxhlyg6lcklxi"

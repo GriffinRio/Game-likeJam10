@@ -1,14 +1,11 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://bfevqvnmd64u0"]
 
 [ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_h106x"]
-[ext_resource type="Texture2D" uid="uid://c6cj8cv0hrd61" path="res://Assets/Art/Sprite-0003.png" id="2_ws5bn"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lwbyh"]
-atlas = ExtResource("2_ws5bn")
-region = Rect2(0, 0, 11, 9)
 
 [resource]
 script = ExtResource("1_h106x")
 name = "Stone"
-sprite = SubResource("AtlasTexture_lwbyh")
+stackable = true
+count = 1
+placeable = true
 metadata/_custom_type_script = "uid://dde0u4wrgliw4"

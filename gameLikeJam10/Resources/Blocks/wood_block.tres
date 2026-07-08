@@ -8,4 +8,5 @@ script = ExtResource("1_jg2gi")
 name = "Wood"
 health = 100
 drop = ExtResource("1_6vo7w")
+atlas_coord = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://dxhlyg6lcklxi"
