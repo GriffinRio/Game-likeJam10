@@ -8,6 +8,8 @@ const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
 
 @onready var inventory: Inventory = $Inventory
+#Kenny time :)
+@onready var _animated_sprite = $AnimatedSprite2D
 
 func _ready() -> void:
 	pass
@@ -35,9 +37,13 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("Move_Left", "Move_Right")
 	if direction:
+		#Kenny time :)
+		_animated_sprite.play("Player_Walk")
 		velocity.x = direction * SPEED
+		_animated_sprite.flip_h = (direction < 0)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		_animated_sprite.set_frame_and_progress(4, 0)
 
 	move_and_slide()
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bkyf2s887wro0" path="res://Characters/player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://drsde1w8uxb1y" path="res://inventory.gd" id="2_eovys"]
+[ext_resource type="Texture2D" uid="uid://byhcuy2y4a85c" path="res://Assets/Art/Player_Walk.png" id="3_vb825"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
 radius = 11.5
@@ -10,6 +11,42 @@ height = 47.5
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4flbx"]
 radius = 11.5
 height = 47.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
+atlas = ExtResource("3_vb825")
+region = Rect2(0, 0, 24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
+atlas = ExtResource("3_vb825")
+region = Rect2(24, 0, 24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
+atlas = ExtResource("3_vb825")
+region = Rect2(48, 0, 24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
+atlas = ExtResource("3_vb825")
+region = Rect2(72, 0, 24, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65n15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lquwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mycd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vw27")
+}],
+"loop": true,
+"name": &"Player_Walk",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=345442620]
 collision_layer = 0
@@ -27,3 +64,10 @@ mesh = SubResource("CapsuleMesh_4flbx")
 
 [node name="Inventory" type="Node2D" parent="." unique_id=547418861]
 script = ExtResource("2_eovys")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=305023575]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_65n15")
+animation = &"Player_Walk"
+frame = 1
+frame_progress = 0.14917934
