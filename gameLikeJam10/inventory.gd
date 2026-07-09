@@ -23,6 +23,7 @@ func change_eqipped(direction : int):
 
 func gain_item(item: Item):
 	var item_index = hotbar.find(item)
+	#TODO: only if item is stackable
 	if(item_index >= 0):
 		hotbar[item_index].count += 1
 	else:	
