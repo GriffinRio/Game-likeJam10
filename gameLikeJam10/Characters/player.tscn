@@ -6,11 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
 radius = 11.5
-height = 47.5
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_4flbx"]
-radius = 11.5
-height = 47.5
+height = 42.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
 atlas = ExtResource("3_vb825")
@@ -53,12 +49,8 @@ collision_layer = 0
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=293915605]
-position = Vector2(0, -15)
+position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_sh265")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=326610712]
-position = Vector2(0, -15)
-mesh = SubResource("CapsuleMesh_4flbx")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1141743126]
 
@@ -66,7 +58,7 @@ mesh = SubResource("CapsuleMesh_4flbx")
 script = ExtResource("2_eovys")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=305023575]
-position = Vector2(0, -15)
+position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_65n15")
 animation = &"Player_Walk"
 frame = 1
