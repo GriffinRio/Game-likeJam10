@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cg211pusphqds"]
 
 [ext_resource type="Texture2D" uid="uid://c6cj8cv0hrd61" path="res://Assets/Art/Sprite-0003.png" id="2_0aub0"]
-[ext_resource type="Script" uid="uid://ba2eel5ag4guy" path="res://tile_map.gd" id="2_1n30v"]
+[ext_resource type="Script" uid="uid://ba2eel5ag4guy" path="res://Environment/tile_map.gd" id="2_1n30v"]
 [ext_resource type="Resource" uid="uid://d14umqor1bir5" path="res://Resources/Blocks/stone_block.tres" id="2_35kre"]
 [ext_resource type="Resource" uid="uid://dnsagw4aa1e6q" path="res://Resources/Blocks/wood_block.tres" id="3_anah5"]
 [ext_resource type="Resource" uid="uid://d0qwmkc6e4rc8" path="res://Resources/Blocks/dirt_block.tres" id="4_qtlnl"]
