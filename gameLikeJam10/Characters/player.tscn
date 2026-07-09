@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bkyf2s887wro0" path="res://Characters/player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://drsde1w8uxb1y" path="res://inventory.gd" id="2_eovys"]
+[ext_resource type="Texture2D" uid="uid://dxc7kjcubb3yo" path="res://Assets/Art/Player_Mine.png" id="3_65n15"]
 [ext_resource type="Texture2D" uid="uid://byhcuy2y4a85c" path="res://Assets/Art/Player_Walk.png" id="3_vb825"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
@@ -11,6 +12,22 @@ height = 47.5
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4flbx"]
 radius = 11.5
 height = 47.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l48on"]
+atlas = ExtResource("3_65n15")
+region = Rect2(0, 0, 24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m0gv"]
+atlas = ExtResource("3_65n15")
+region = Rect2(24, 0, 24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p728j"]
+atlas = ExtResource("3_65n15")
+region = Rect2(48, 0, 24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5slg2"]
+atlas = ExtResource("3_65n15")
+region = Rect2(72, 0, 24, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
 atlas = ExtResource("3_vb825")
@@ -30,6 +47,23 @@ region = Rect2(72, 0, 24, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_65n15"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l48on")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m0gv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p728j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5slg2")
+}],
+"loop": true,
+"name": &"Player_Mine",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lquwl")
@@ -69,5 +103,3 @@ script = ExtResource("2_eovys")
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_65n15")
 animation = &"Player_Walk"
-frame = 1
-frame_progress = 0.14917934

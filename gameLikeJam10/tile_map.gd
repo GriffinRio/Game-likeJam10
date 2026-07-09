@@ -31,6 +31,7 @@ func place_block(mouse_position, block : Vector2i):
 
 func destroy_block(mouse_position):
 	if(tile_layer.get_cell_atlas_coords(mouse_position) != EMPTY_TILE):
+		# figure out how to link mining animation to block destruction, global variable back to player?
 		var block: Block = tile_layer.get_cell_tile_data(mouse_position).get_custom_data("block_data")
 		tile_layer.set_cell(mouse_position, -1, EMPTY_TILE)
 		block_destroyed.emit(block)
