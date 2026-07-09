@@ -6,6 +6,5 @@
 script = ExtResource("1_h106x")
 name = "Stone"
 stackable = true
-count = 1
 placeable = true
 metadata/_custom_type_script = "uid://dde0u4wrgliw4"

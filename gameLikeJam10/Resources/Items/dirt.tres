@@ -6,7 +6,6 @@
 script = ExtResource("1_phsam")
 name = "Dirt"
 stackable = true
-count = 1
 placeable = true
 block = Vector2i(1, 0)
 metadata/_custom_type_script = "uid://dde0u4wrgliw4"

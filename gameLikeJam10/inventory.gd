@@ -17,8 +17,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func change_eqipped(direction : int):
-	equipped = ((equipped + direction) % 10 + 10) % 10
+func change_equipped(direction : int):
+	equipped = ((equipped + direction) % size + size) % size
 	print(str(equipped) + ": " + str(hotbar[equipped]))
 
 func gain_item(item: Item):
@@ -30,6 +30,7 @@ func gain_item(item: Item):
 		var empty_index = hotbar.find(null)
 		if(empty_index >= 0):
 			hotbar[empty_index] = item
+			hotbar[empty_index].count += 1
 		else:
 			print("No room for item: " + item.name)
 	print(hotbar)

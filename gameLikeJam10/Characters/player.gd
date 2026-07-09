@@ -49,10 +49,10 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if(event.is_action_pressed("Switch_Item_Up")):
-		inventory.change_eqipped(1)
+		inventory.change_equipped(1)
 	elif(event.is_action_pressed("Switch_Item_Down")):
 		# ((equipped - 1) % 10 + 10) makes the index positive, the extra % 10 wraps if needed
-		inventory.change_eqipped(-1)
+		inventory.change_equipped(-1)
 
 func pickup_item(item : Item):
 	inventory.gain_item(item)
