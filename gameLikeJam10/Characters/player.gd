@@ -5,7 +5,7 @@ signal place_block(block)
 signal destroy_block()
 
 const SPEED = 100.0
-const JUMP_VELOCITY = -200.0
+const JUMP_VELOCITY = -225.0
 
 @onready var inventory: Inventory = $Inventory
 #Kenny time :)
