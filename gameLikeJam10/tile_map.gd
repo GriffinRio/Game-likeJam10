@@ -5,9 +5,13 @@ signal block_destroyed(block : Block)
 signal block_placed(block : Block)
 
 const EMPTY_TILE = Vector2i(-1,-1)
+const TILE_SIZE = 24
 
 @onready var highlight: MeshInstance2D = $Highlight
 @onready var tile_layer: TileMapLayer = $TileLayer
+
+static func map_coord(position : Vector2) -> Vector2i:
+	return Vector2i(floor(position/TILE_SIZE))
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,9 +20,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func map_coord(mouse_position):
-	return tile_layer.local_to_map(mouse_position)
 
 func highlight_block(mouse_position):
 	highlight.position = tile_layer.map_to_local(mouse_position)
