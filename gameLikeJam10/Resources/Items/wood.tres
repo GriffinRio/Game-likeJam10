@@ -1,10 +1,16 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://daduohgve40bf"]
 
 [ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_6vvvm"]
+[ext_resource type="Texture2D" uid="uid://c6cj8cv0hrd61" path="res://Assets/Art/Sprite-0003.png" id="2_6vvvm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7cti"]
+atlas = ExtResource("2_6vvvm")
+region = Rect2(0, 24, 24, 24)
 
 [resource]
 script = ExtResource("1_6vvvm")
 name = "Wood"
+sprite = SubResource("AtlasTexture_p7cti")
 stackable = true
 placeable = true
 block = Vector2i(0, 1)
