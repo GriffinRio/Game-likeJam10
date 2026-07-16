@@ -37,7 +37,7 @@ func gain_item(item: Item):
 			if(item.stackable):
 				hotbar[empty_index].count = 1
 		else:
-			push_error("No room for item: " + item.to_string())
+			push_warning("No room for item: " + item.to_string())
 
 # TODO: add functionality for removing multiple counts at once
 ## Removes item from inventory.
@@ -55,3 +55,6 @@ func lose_item(item: Item):
 ## Returns currently equipped item
 func get_equipped() -> Item:
 	return hotbar[equipped]
+
+func get_inventory() -> Array:
+	return hotbar

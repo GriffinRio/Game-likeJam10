@@ -4,6 +4,8 @@ class_name Main
 var mouse_positiion
 @onready var tile_map: Tile_Map = $TileMap
 @onready var player: Player = $Player
+@onready var hotbar: Hotbar = $CanvasLayer/Hotbar
+
 
 # Intializes
 func _ready() -> void:
@@ -28,7 +30,13 @@ func _on_player_place_block(block: Item) -> void:
 ## Connects player inventory to tile_map destroy
 func _on_tile_map_block_destroyed(block: Block) -> void:
 	player.pickup_item(block.drop)
+	hotbar.update_hotbar(player.inventory.get_inventory())
 
 ## Connects player inventory to tile_map place
 func _on_tile_map_block_placed(block: Block) -> void:
 	player.drop_item(block.drop)
+	hotbar.update_hotbar(player.inventory.get_inventory())
+
+
+func _on_player_change_equipped(equipped_index: Variant) -> void:
+	hotbar.update_equipped(equipped_index)

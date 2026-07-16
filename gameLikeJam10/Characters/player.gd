@@ -5,6 +5,8 @@ signal place_block(block)
 # TODO: Implement item destroying blocks
 ## Emmited when player destroys block
 signal destroy_block()
+## Emmited when player changes equipped item
+signal change_equipped(equipped_index)
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -225.0
@@ -19,7 +21,7 @@ func _process(delta: float) -> void:
 		if(to_place != null and to_place.placeable):
 			place_block.emit(to_place)
 		else:
-			push_error("No block to place: " + to_place.to_string())
+			push_warning("No block to place")
 	# TODO: Implement item destroying blocks
 	elif(Input.is_action_pressed("Destroy")):
 		#TODO: Fix animation being a still image, make animation directional
@@ -52,8 +54,10 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if(event.is_action_pressed("Switch_Item_Up")):
 		inventory.change_equipped(1)
+		change_equipped.emit(inventory.equipped)
 	elif(event.is_action_pressed("Switch_Item_Down")):
 		inventory.change_equipped(-1)
+		change_equipped.emit(inventory.equipped)
 
 ## Adds given item to player inventory
 func pickup_item(item : Item):

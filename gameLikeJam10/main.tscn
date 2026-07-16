@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dkwo78qreb4ac" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bhlve66jvy8o2" path="res://Characters/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://cg211pusphqds" path="res://Environment/tile_map.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://qntxa88dg8jv" path="res://UI/hotbar.tscn" id="4_1bvp3"]
 
 [node name="Main" type="Node2D" unique_id=1355193467]
 script = ExtResource("1_h2yge")
@@ -12,6 +13,25 @@ position = Vector2(304, 203)
 
 [node name="TileMap" parent="." unique_id=968644839 instance=ExtResource("2_0xm2m")]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=399838894]
+
+[node name="Hotbar" parent="CanvasLayer" unique_id=1187527943 instance=ExtResource("4_1bvp3")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[connection signal="change_equipped" from="Player" to="." method="_on_player_change_equipped"]
 [connection signal="destroy_block" from="Player" to="." method="_on_player_destroy_block"]
 [connection signal="place_block" from="Player" to="." method="_on_player_place_block"]
 [connection signal="block_destroyed" from="TileMap" to="." method="_on_tile_map_block_destroyed"]
