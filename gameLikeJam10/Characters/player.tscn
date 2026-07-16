@@ -9,6 +9,10 @@
 radius = 11.5
 height = 42.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
+atlas = ExtResource("3_vb825")
+region = Rect2(24, 0, 24, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_l48on"]
 atlas = ExtResource("3_65n15")
 region = Rect2(0, 0, 24, 48)
@@ -29,10 +33,6 @@ region = Rect2(72, 0, 24, 48)
 atlas = ExtResource("3_vb825")
 region = Rect2(0, 0, 24, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
-atlas = ExtResource("3_vb825")
-region = Rect2(24, 0, 24, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
 atlas = ExtResource("3_vb825")
 region = Rect2(48, 0, 24, 48)
@@ -43,6 +43,14 @@ region = Rect2(72, 0, 24, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_65n15"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mycd")
+}],
+"loop": true,
+"name": &"Player_Idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l48on")
@@ -94,4 +102,5 @@ script = ExtResource("2_eovys")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=305023575]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_65n15")
-animation = &"Player_Walk"
+animation = &"Player_Idle"
+autoplay = "Player_Walk"

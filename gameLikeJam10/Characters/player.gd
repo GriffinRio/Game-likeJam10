@@ -22,7 +22,11 @@ func _process(delta: float) -> void:
 			push_error("No block to place: " + to_place.to_string())
 	# TODO: Implement item destroying blocks
 	elif(Input.is_action_pressed("Destroy")):
+		#TODO: Fix animation being a still image, make animation directional
+		_animated_sprite.play("Player_Mine")
 		destroy_block.emit()
+	elif(Input.is_action_just_released("Destroy")):
+		_animated_sprite.play("Player_Idle")
 
 # Handles player movement
 func _physics_process(delta: float) -> void:
@@ -36,8 +40,8 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("Move_Left", "Move_Right")
 	if direction:
 		_animated_sprite.play("Player_Walk")
-		velocity.x = direction * SPEED
 		_animated_sprite.flip_h = (direction < 0)
+		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		_animated_sprite.set_frame_and_progress(4, 0)
