@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c2ef4aww0l04u"]
+
+[ext_resource type="Script" uid="uid://ddy40o0j1kgig" path="res://UI/hotbar_slot.gd" id="1_jsmf4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsmf4"]
+resource_local_to_scene = true
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6745098, 0.6745098, 0.6745098, 1)
+
+[sub_resource type="Theme" id="Theme_qaq0a"]
+default_font_size = 4
+
+[node name="HotbarSlot" type="Control" unique_id=786506758]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 24.0
+offset_bottom = 24.0
+script = ExtResource("1_jsmf4")
+
+[node name="ItemImage" type="TextureRect" parent="." unique_id=1280149871]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="." unique_id=655853321]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jsmf4")
+
+[node name="StackCount" type="Label" parent="." unique_id=1635842676]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -7.0
+offset_right = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_qaq0a")
