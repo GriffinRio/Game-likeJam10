@@ -16,6 +16,22 @@ static func map_coord(position : Vector2) -> Vector2i:
 static func local_coord(position : Vector2i) -> Vector2:
 	return Vector2i(position * TILE_SIZE)
 
+static func get_tiles_in_line(tile_start : Vector2i, tile_end : Vector2i) -> Array:
+	var tiles : Array[Vector2i] = [tile_start]
+	var diff = tile_end - tile_start
+	var axis : int
+	if(diff.x == 0):
+		axis = 1
+	else:
+		axis = 0
+	var length = abs(diff[axis])
+	var direction = diff[axis] / length 
+	for i in range(length):
+		var tile = tiles[-1]
+		tile[axis] = tile[axis] + (1 * direction)
+		tiles.append(tile)
+	return tiles
+
 ## Makes sure block can be placed and then does so. Emits block_placed to remove block from player inventory
 func place_block(mouse_position, block : Vector2i):
 	if(tile_layer.get_cell_atlas_coords(mouse_position) == EMPTY_TILE):

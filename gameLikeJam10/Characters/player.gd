@@ -10,6 +10,8 @@ signal change_equipped(equipped_index)
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -225.0
+const HEIGHT = 42.0
+const RADIUS = 11.5
 
 @onready var inventory: Inventory = $Inventory
 @onready var _animated_sprite = $AnimatedSprite2D
@@ -66,3 +68,23 @@ func pickup_item(item : Item):
 ## Removes given item from player inventory
 func drop_item(item : Item):
 	inventory.lose_item(item)
+	
+func tilemap_position() -> Array:
+	var corners : Array[Vector2i] = []
+	var collision_position = $CollisionShape2D.global_position
+	# goes in order from bottem left to top left counter clockwise
+	var radius_sign = -1
+	var height_sign = 1
+	for i in range(2):
+		for j in range(2):
+			corners.append(Tile_Map.map_coord(Vector2(collision_position.x + (RADIUS * radius_sign), collision_position.y + (HEIGHT/2 * height_sign))))
+			radius_sign *= -1
+		height_sign = -1
+		radius_sign = 1
+	var tiles : Array[Vector2i] = []
+	for i in range(4):
+		var line = Tile_Map.get_tiles_in_line(corners[i], corners[(i + 1) % 4])
+		for tile in line:
+			if (tiles.find(tile) == -1):
+				tiles.append(tile)
+	return tiles
