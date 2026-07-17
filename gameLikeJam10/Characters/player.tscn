@@ -5,9 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dxc7kjcubb3yo" path="res://Assets/Art/Player_Mine.png" id="3_65n15"]
 [ext_resource type="Texture2D" uid="uid://byhcuy2y4a85c" path="res://Assets/Art/Player_Walk.png" id="3_vb825"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
-radius = 11.5
-height = 42.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65n15"]
+size = Vector2(21, 41)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
 atlas = ExtResource("3_vb825")
@@ -91,8 +90,8 @@ collision_layer = 0
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=293915605]
-position = Vector2(0, -21)
-shape = SubResource("CapsuleShape2D_sh265")
+position = Vector2(-0.5, -20.5)
+shape = SubResource("RectangleShape2D_65n15")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1141743126]
 
