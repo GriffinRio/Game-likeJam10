@@ -55,10 +55,10 @@ func _physics_process(delta: float) -> void:
 # Handles switching hotbar equipped
 func _input(event: InputEvent) -> void:
 	if(event.is_action_pressed("Switch_Item_Up")):
-		inventory.change_equipped(1)
+		inventory.change_equipped(-1)
 		change_equipped.emit(inventory.equipped)
 	elif(event.is_action_pressed("Switch_Item_Down")):
-		inventory.change_equipped(-1)
+		inventory.change_equipped(1)
 		change_equipped.emit(inventory.equipped)
 
 ## Adds given item to player inventory
