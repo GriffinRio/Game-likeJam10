@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bhlve66jvy8o2" path="res://Characters/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://cg211pusphqds" path="res://Environment/tile_map.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://qntxa88dg8jv" path="res://UI/hotbar.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://ci1r1205qqwnk" path="res://UI/highlight.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node2D" unique_id=1355193467]
 script = ExtResource("1_h2yge")
@@ -13,9 +14,15 @@ position = Vector2(304, 203)
 
 [node name="TileMap" parent="." unique_id=968644839 instance=ExtResource("2_0xm2m")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=399838894]
+[node name="WorldUI" type="CanvasLayer" parent="." unique_id=1472346036]
+follow_viewport_enabled = true
 
-[node name="Hotbar" parent="CanvasLayer" unique_id=1187527943 instance=ExtResource("4_1bvp3")]
+[node name="Highlight" parent="WorldUI" unique_id=1303803340 instance=ExtResource("5_lquwl")]
+
+[node name="CameraUI" type="CanvasLayer" parent="." unique_id=399838894]
+layer = 10
+
+[node name="Hotbar" parent="CameraUI" unique_id=1187527943 instance=ExtResource("4_1bvp3")]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

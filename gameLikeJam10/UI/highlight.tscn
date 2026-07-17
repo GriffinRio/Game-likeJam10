@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ci1r1205qqwnk"]
+
+[ext_resource type="Script" uid="uid://uw84mahxw5dm" path="res://UI/highlight.gd" id="1_x3h2j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8slr"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_anydf"]
+font_size = 5
+font_color = Color(1, 0, 0, 1)
+
+[node name="Highlight" type="Control" unique_id=1303803340]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 24.0
+offset_bottom = 24.0
+script = ExtResource("1_x3h2j")
+
+[node name="Panel" type="Panel" parent="." unique_id=169979228]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t8slr")
+
+[node name="DEBUG_Label" type="Label" parent="." unique_id=1973751001]
+layout_mode = 1
+offset_right = 19.0
+offset_bottom = 7.0
+label_settings = SubResource("LabelSettings_anydf")

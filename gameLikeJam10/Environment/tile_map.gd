@@ -8,15 +8,13 @@ signal block_placed(block : Block)
 const EMPTY_TILE = Vector2i(-1,-1)
 const TILE_SIZE = 24
 
-@onready var highlight: MeshInstance2D = $Highlight
 @onready var tile_layer: TileMapLayer = $TileLayer
 ## Allows all nodes/scripts to convert coordinates to tile_map coords
 static func map_coord(position : Vector2) -> Vector2i:
 	return Vector2i(floor(position/TILE_SIZE))
-	
-## Moves highlight to center position of tile at mouse_position
-func highlight_block(mouse_position):
-	highlight.position = tile_layer.map_to_local(mouse_position)
+
+static func local_coord(position : Vector2i) -> Vector2:
+	return Vector2i(position * TILE_SIZE)
 
 ## Makes sure block can be placed and then does so. Emits block_placed to remove block from player inventory
 func place_block(mouse_position, block : Vector2i):
