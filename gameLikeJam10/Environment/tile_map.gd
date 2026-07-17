@@ -16,7 +16,7 @@ static func map_coord(position : Vector2) -> Vector2i:
 static func local_coord(position : Vector2i) -> Vector2:
 	return Vector2i(position * TILE_SIZE)
 
-static func get_tiles_in_line(tile_start : Vector2i, tile_end : Vector2i) -> Array:
+static func get_tiles_in_line(tile_start : Vector2i, tile_end : Vector2i) -> Array[Vector2i]:
 	var tiles : Array[Vector2i] = [tile_start]
 	var diff = tile_end - tile_start
 	var axis : int
@@ -25,7 +25,7 @@ static func get_tiles_in_line(tile_start : Vector2i, tile_end : Vector2i) -> Arr
 	else:
 		axis = 0
 	var length = abs(diff[axis])
-	var direction = diff[axis] / length 
+	var direction = diff[axis] /  length
 	for i in range(length):
 		var tile = tiles[-1]
 		tile[axis] = tile[axis] + (1 * direction)

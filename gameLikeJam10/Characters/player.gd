@@ -69,7 +69,7 @@ func pickup_item(item : Item):
 func drop_item(item : Item):
 	inventory.lose_item(item)
 	
-func tilemap_position() -> Array:
+func tilemap_position() -> Array[Vector2i]:
 	var corners : Array[Vector2i] = []
 	var collision_position = $CollisionShape2D.global_position
 	# goes in order from bottem left to top left counter clockwise
@@ -83,8 +83,12 @@ func tilemap_position() -> Array:
 		radius_sign = 1
 	var tiles : Array[Vector2i] = []
 	for i in range(4):
-		var line = Tile_Map.get_tiles_in_line(corners[i], corners[(i + 1) % 4])
-		for tile in line:
-			if (tiles.find(tile) == -1):
-				tiles.append(tile)
+		if(corners[i] == corners[(i + 1) % 4]):
+			if(tiles.find(corners[i]) == -1):
+				tiles.append(corners[i])
+		else:
+			var line = Tile_Map.get_tiles_in_line(corners[i], corners[(i + 1) % 4])
+			for tile in line:
+				if (tiles.find(tile) == -1):
+					tiles.append(tile)
 	return tiles
