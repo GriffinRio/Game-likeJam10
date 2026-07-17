@@ -1,5 +1,6 @@
 extends CharacterBody2D
 class_name Player
+
 ## Emmited when player places a valid block
 signal place_block(block)
 # TODO: Implement item destroying blocks
@@ -10,12 +11,17 @@ signal change_equipped(equipped_index)
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -225.0
-const HEIGHT = 41.0 / 2
-const RADIUS = 21.0 / 2
 
 @onready var inventory: Inventory = $Inventory
 @onready var _animated_sprite = $AnimatedSprite2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
+var HEIGHT : float
+var RADIUS : float
+
+func _ready() -> void:
+	HEIGHT = collision_shape_2d.shape.size.y / 2.0
+	RADIUS = collision_shape_2d.shape.size.x / 2.0
 # Handles player place and destory input for holding functionality
 func _process(delta: float) -> void:
 	if(Input.is_action_pressed("Place")):
@@ -60,7 +66,9 @@ func _input(event: InputEvent) -> void:
 	elif(event.is_action_pressed("Switch_Item_Down")):
 		inventory.change_equipped(1)
 		change_equipped.emit(inventory.equipped)
-
+	elif(event.is_action_pressed("Direct_Item_Switch")):
+		inventory.change_equipped_direct(event.keycode - 49)
+		change_equipped.emit(inventory.equipped)
 ## Adds given item to player inventory
 func pickup_item(item : Item):
 	inventory.gain_item(item)

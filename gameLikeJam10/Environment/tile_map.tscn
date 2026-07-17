@@ -32,6 +32,7 @@ custom_data_layer_0/type = 24
 sources/1 = SubResource("TileSetAtlasSource_3dr34")
 
 [node name="TileMap" type="Node2D" unique_id=968644839]
+z_index = -1
 script = ExtResource("2_1n30v")
 
 [node name="TileLayer" type="TileMapLayer" parent="." unique_id=1278679280]

@@ -22,6 +22,9 @@ func change_equipped(direction : int):
 	# Kinda works like if statements, but one math line. 
 	equipped = ((equipped + direction) % SIZE + SIZE) % SIZE
 
+func change_equipped_direct(index: int):
+	equipped = (index + SIZE) % SIZE
+
 ## Puts acquired item into inventory. 
 ## Will stack with other versions of it if item is stackable
 ## Otherwise, will find new slot for it 
