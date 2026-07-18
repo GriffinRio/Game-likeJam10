@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ci1r1205qqwnk"]
 
 [ext_resource type="Script" uid="uid://uw84mahxw5dm" path="res://UI/highlight.gd" id="1_x3h2j"]
+[ext_resource type="Texture2D" uid="uid://5a6h3xll2qui" path="res://Assets/Art/minecraft_block_breaking.png" id="2_5aymv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8slr"]
 bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
@@ -13,6 +14,63 @@ border_color = Color(0, 1, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_anydf"]
 font_size = 5
 font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ccdl"]
+atlas = ExtResource("2_5aymv")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7idlv"]
+atlas = ExtResource("2_5aymv")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sbww"]
+atlas = ExtResource("2_5aymv")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfiaa"]
+atlas = ExtResource("2_5aymv")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlqnb"]
+atlas = ExtResource("2_5aymv")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25nid"]
+atlas = ExtResource("2_5aymv")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibsum"]
+atlas = ExtResource("2_5aymv")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3h2j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ccdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7idlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sbww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfiaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlqnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25nid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibsum")
+}],
+"loop": true,
+"name": &"Breaking",
+"speed": 5.0
+}]
 
 [node name="Highlight" type="Control" unique_id=1303803340]
 layout_mode = 3
@@ -35,3 +93,8 @@ layout_mode = 1
 offset_right = 19.0
 offset_bottom = 7.0
 label_settings = SubResource("LabelSettings_anydf")
+
+[node name="BreakingAnimation" type="AnimatedSprite2D" parent="." unique_id=1149157191]
+position = Vector2(12, 12)
+sprite_frames = SubResource("SpriteFrames_x3h2j")
+animation = &"Breaking"

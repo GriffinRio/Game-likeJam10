@@ -3,6 +3,7 @@ class_name Highlight
 
 @onready var panel: Panel = $Panel
 @onready var DEBUG_label: Label = $DEBUG_Label
+@onready var breaking_animation: AnimatedSprite2D = $BreakingAnimation
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,3 +24,10 @@ func update_interactable(interactable):
 		panel.get_theme_stylebox("panel").border_color = Color.LAWN_GREEN
 	else:
 		panel.get_theme_stylebox("panel").border_color = Color.RED
+
+func breaking():
+	breaking_animation.play()
+
+func reset():
+	breaking_animation.stop()
+	breaking_animation.frame = 0

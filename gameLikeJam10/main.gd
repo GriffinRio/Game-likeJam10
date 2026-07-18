@@ -37,6 +37,7 @@ func within_interactable_range(mouse_position: Vector2i):
 func _on_player_destroy_block() -> void:
 	if(valid_interactable_distance):
 		tile_map.destroy_block(mouse_position)
+		highlight.breaking()
 	else:
 		push_warning("Tile not in range of player")
 	
