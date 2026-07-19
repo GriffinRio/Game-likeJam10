@@ -6,7 +6,7 @@ var slots : Array[HotbarSlot]
 var equipped : int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var children = h_box_container.get_children()
+	var children : Array[Node] = h_box_container.get_children()
 	for child in children:
 		slots.append(child)
 	equipped = 0
@@ -16,11 +16,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func update_hotbar(inventory : Array):
+func update_hotbar(inventory : Array) -> void:
 	for i in range(len(inventory)):
 		slots[i].item = inventory[i]
 
-func update_equipped(new_equipped: int):
+func update_equipped(new_equipped: int) -> void:
 	slots[equipped].unequip()
 	slots[new_equipped].equip()
 	equipped = new_equipped

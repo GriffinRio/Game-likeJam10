@@ -27,7 +27,7 @@ class_name Item
 @export var block : Vector2i
 
 func _to_string() -> String:
-	var output = ""
+	var output : String = ""
 	output += name + "\n"
 	output += "Stackable: " + str(stackable) + "\n"
 	if(stackable):

@@ -7,8 +7,8 @@ class_name Main
 @onready var highlight: Highlight = $WorldUI/Highlight
 
 ## Constantly stores mouse position in tile_map terms
-var mouse_position
-var valid_interactable_distance
+var mouse_position : Vector2i
+var valid_interactable_distance : bool
 
 # Intializes
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 # Updates mouse_position
 func _process(delta: float) -> void:
-	var new_mouse_position = Tile_Map.map_coord(get_local_mouse_position())
+	var new_mouse_position : Vector2i = Tile_Map.map_coord(get_local_mouse_position())
 	if(mouse_position != new_mouse_position):
 		mouse_position = new_mouse_position
 		highlight.update_position(mouse_position)
@@ -26,9 +26,9 @@ func _process(delta: float) -> void:
 	valid_interactable_distance = within_interactable_range(mouse_position)
 	highlight.update_interactable(valid_interactable_distance)
 
-func within_interactable_range(mouse_position: Vector2i):
-	var player_tiles = player.tilemap_position()
-	var interactable = false
+func within_interactable_range(mouse_position: Vector2i) -> bool:
+	var player_tiles : Array[Vector2i] = player.tilemap_position()
+	var interactable : bool = false
 	if(player_tiles.find(mouse_position) == -1):
 		for tile in player_tiles:
 			if((tile - mouse_position).length() == 1):
@@ -53,7 +53,7 @@ func _on_tile_map_block_placed(block: Block) -> void:
 	hotbar.update_hotbar(player.inventory.get_inventory())
 
 
-func _on_player_change_equipped(equipped_index: Variant) -> void:
+func _on_player_change_equipped(equipped_index: int) -> void:
 	hotbar.update_equipped(equipped_index)
 
 

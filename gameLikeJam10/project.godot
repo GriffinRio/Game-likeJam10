@@ -19,6 +19,14 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 Enums="*uid://c67vsaorf4o3k"
 EventBus="*uid://duqq0fs87lk6k"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/unsafe_property_access=2
+gdscript/warnings/unsafe_method_access=2
+gdscript/warnings/unsafe_cast=1
+gdscript/warnings/unsafe_call_argument=2
+
 [display]
 
 window/size/viewport_width=640

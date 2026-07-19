@@ -6,9 +6,12 @@ var item: Item
 @onready var item_image: TextureRect = $ItemImage
 @onready var stack_count: Label = $StackCount
 @onready var panel: Panel = $Panel
+
+var stylebox : StyleBoxFlat
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	panel.get_theme_stylebox("panel").border_color = Color.DIM_GRAY
+	stylebox = panel.get_theme_stylebox("panel","styleboxflat")
+	stylebox.border_color = Color.DIM_GRAY
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,8 +30,8 @@ func _process(delta: float) -> void:
 		stack_count.visible = false
 		
 
-func equip():
-	panel.get_theme_stylebox("panel").border_color = Color.WHITE
+func equip() -> void:
+	stylebox.border_color = Color.WHITE
 
-func unequip():
-	panel.get_theme_stylebox("panel").border_color = Color.DIM_GRAY
+func unequip() -> void:
+	stylebox.border_color = Color.DIM_GRAY

@@ -17,23 +17,23 @@ func _ready() -> void:
 
 # TODO: add support for keyboard inventory switching?
 ## changes equipped index by 1, positive or negative depending on previous player input
-func change_equipped(direction : int):
+func change_equipped(direction : int) -> void:
 	# Formula for wrapping array both pos and neg. 
 	# Kinda works like if statements, but one math line. 
 	equipped = ((equipped + direction) % SIZE + SIZE) % SIZE
 
-func change_equipped_direct(index: int):
+func change_equipped_direct(index: int) -> void:
 	equipped = (index + SIZE) % SIZE
 
 ## Puts acquired item into inventory. 
 ## Will stack with other versions of it if item is stackable
 ## Otherwise, will find new slot for it 
-func gain_item(item: Item):
-	var item_index = hotbar.find(item)
+func gain_item(item: Item) -> void:
+	var item_index : int = hotbar.find(item)
 	if(item.stackable and item_index >= 0):
 		hotbar[item_index].count += 1
 	else:
-		var empty_index = hotbar.find(null)
+		var empty_index : int = hotbar.find(null)
 		# TODO: create new instance of item because it always uses same one from block which is weird?
 		if(empty_index >= 0):
 			hotbar[empty_index] = item
@@ -45,8 +45,8 @@ func gain_item(item: Item):
 # TODO: add functionality for removing multiple counts at once
 ## Removes item from inventory.
 ## Either fully removes it with null or just removes a count depending on stackable/count
-func lose_item(item: Item):
-	var item_index = hotbar.find(item)
+func lose_item(item: Item)  -> void:
+	var item_index : int = hotbar.find(item)
 	if(item_index >= 0):
 		if(not item.stackable || hotbar[item_index].count <= 1):
 			hotbar[item_index] = null
