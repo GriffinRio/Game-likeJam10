@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemTools" format=3 uid="uid://b5cq0r53qv68l"]
+
+[ext_resource type="Script" uid="uid://b8su1vseu30ab" path="res://Resources/Templates/item_tools.gd" id="1_1yj0s"]
+
+[resource]
+script = ExtResource("1_1yj0s")
+name = "Iron_Pick"
+metadata/_custom_type_script = "uid://b8su1vseu30ab"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemTools" format=3 uid="uid://db2bihgb0hr2a"]
+
+[ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_3jfhu"]
+[ext_resource type="Script" uid="uid://b8su1vseu30ab" path="res://Resources/Templates/item_tools.gd" id="1_m445j"]
+
+[resource]
+script = ExtResource("1_m445j")
+recipe = Array[ExtResource("1_3jfhu")]([null])
+name = "Wood_Pick"
+metadata/_custom_type_script = "uid://b8su1vseu30ab"
