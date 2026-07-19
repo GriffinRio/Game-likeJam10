@@ -21,6 +21,8 @@ func _process(delta: float) -> void:
 	if(mouse_position != new_mouse_position):
 		mouse_position = new_mouse_position
 		highlight.update_position(mouse_position)
+		highlight.reset_break()
+		_on_player_mining(player.is_mining, player.inventory.get_equipped())
 	valid_interactable_distance = within_interactable_range(mouse_position)
 	highlight.update_interactable(valid_interactable_distance)
 
@@ -32,14 +34,6 @@ func within_interactable_range(mouse_position: Vector2i):
 			if((tile - mouse_position).length() == 1):
 				interactable = true
 	return interactable
-
-## Connects player destroy to tile_map destroy
-func _on_player_destroy_block() -> void:
-	if(valid_interactable_distance):
-		tile_map.destroy_block(mouse_position)
-		highlight.breaking()
-	else:
-		push_warning("Tile not in range of player")
 	
 ## Connects player place to tile_map place
 func _on_player_place_block(block: Item) -> void:
@@ -61,3 +55,14 @@ func _on_tile_map_block_placed(block: Block) -> void:
 
 func _on_player_change_equipped(equipped_index: Variant) -> void:
 	hotbar.update_equipped(equipped_index)
+
+
+func _on_player_mining(is_mining: bool, item: Item) -> void:
+	if(valid_interactable_distance and is_mining):
+		highlight.breaking()
+		await  highlight.breaking_animation.animation_finished
+		tile_map.destroy_block(mouse_position)
+		highlight.reset_break()
+	else:
+		highlight.reset_break()
+		push_warning("Tile not in range of player")

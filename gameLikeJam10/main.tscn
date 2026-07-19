@@ -39,7 +39,7 @@ size_flags_vertical = 4
 metadata/_edit_use_anchors_ = true
 
 [connection signal="change_equipped" from="Player" to="." method="_on_player_change_equipped"]
-[connection signal="destroy_block" from="Player" to="." method="_on_player_destroy_block"]
+[connection signal="mining" from="Player" to="." method="_on_player_mining"]
 [connection signal="place_block" from="Player" to="." method="_on_player_place_block"]
 [connection signal="block_destroyed" from="TileMap" to="." method="_on_tile_map_block_destroyed"]
 [connection signal="block_placed" from="TileMap" to="." method="_on_tile_map_block_placed"]

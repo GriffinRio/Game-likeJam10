@@ -67,9 +67,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ibsum")
 }],
-"loop": true,
+"loop": false,
 "name": &"Breaking",
-"speed": 5.0
+"speed": 3.5
 }]
 
 [node name="Highlight" type="Control" unique_id=1303803340]

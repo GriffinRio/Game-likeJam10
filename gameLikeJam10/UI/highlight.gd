@@ -28,6 +28,6 @@ func update_interactable(interactable):
 func breaking():
 	breaking_animation.play()
 
-func reset():
+func reset_break():
 	breaking_animation.stop()
 	breaking_animation.frame = 0

@@ -4,24 +4,28 @@ class_name Player
 ## Emmited when player places a valid block
 signal place_block(block)
 # TODO: Implement item destroying blocks
-## Emmited when player destroys block
-signal destroy_block()
+## Emmited when player starts mining
+signal mining(is_mining : bool , item : Item)
 ## Emmited when player changes equipped item
 signal change_equipped(equipped_index)
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -225.0
 
+var HEIGHT : float
+var RADIUS : float
+
 @onready var inventory: Inventory = $Inventory
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
-var HEIGHT : float
-var RADIUS : float
+var is_mining : bool
 
 func _ready() -> void:
 	HEIGHT = collision_shape_2d.shape.size.y / 2.0
 	RADIUS = collision_shape_2d.shape.size.x / 2.0
+	is_mining = false
+
 # Handles player place and destory input for holding functionality
 func _process(delta: float) -> void:
 	if(Input.is_action_pressed("Place")):
@@ -30,13 +34,6 @@ func _process(delta: float) -> void:
 			place_block.emit(to_place)
 		else:
 			push_warning("No block to place")
-	# TODO: Implement item destroying blocks
-	elif(Input.is_action_pressed("Destroy")):
-		#TODO: Fix animation being a still image, make animation directional
-		_animated_sprite.play("Player_Mine")
-		destroy_block.emit()
-	elif(Input.is_action_just_released("Destroy")):
-		_animated_sprite.play("Player_Idle")
 
 # Handles player movement
 func _physics_process(delta: float) -> void:
@@ -69,6 +66,16 @@ func _input(event: InputEvent) -> void:
 	elif(event.is_action_pressed("Direct_Item_Switch")):
 		inventory.change_equipped_direct(event.keycode - 49)
 		change_equipped.emit(inventory.equipped)
+	elif(event.is_action("Destroy")):
+		is_mining = !is_mining
+		print("mining: " + str(is_mining))
+		mining.emit(is_mining, inventory.get_equipped())
+		if(is_mining):
+			_animated_sprite.play("Player_Mine")
+		else:
+			_animated_sprite.play("Player_Idle")
+		
+
 ## Adds given item to player inventory
 func pickup_item(item : Item):
 	inventory.gain_item(item)
@@ -89,6 +96,7 @@ func tilemap_position() -> Array[Vector2i]:
 			radius_sign *= -1
 		height_sign = -1
 		radius_sign = 1
+	# Gets all the actual tiles in between the corners
 	var tiles : Array[Vector2i] = []
 	for i in range(4):
 		if(corners[i] == corners[(i + 1) % 4]):

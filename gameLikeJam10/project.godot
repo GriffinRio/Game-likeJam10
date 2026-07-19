@@ -14,6 +14,10 @@ config/name="Game-likeJam10"
 run/main_scene="uid://8mqlsnp7uqw4"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
+[autoload]
+
+Enums="*uid://c67vsaorf4o3k"
+
 [display]
 
 window/size/viewport_width=640
