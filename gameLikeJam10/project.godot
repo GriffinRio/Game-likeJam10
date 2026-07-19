@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 [autoload]
 
 Enums="*uid://c67vsaorf4o3k"
+EventBus="*uid://duqq0fs87lk6k"
 
 [display]
 
