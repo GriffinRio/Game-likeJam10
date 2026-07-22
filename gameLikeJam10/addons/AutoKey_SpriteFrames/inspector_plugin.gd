@@ -101,12 +101,11 @@ func _on_auto_keyframe_button_pressed(animated_sprite: AnimatedSprite2D):
 	var total_length: float = frame_count * time_step
 	undo_redo.add_do_method(animation, "set_length", total_length)
 	undo_redo.add_do_method(animation, "set_step", time_step)
+	
 	# GRIFFIN EDITS
 	var loop = sprite_frames.get_animation_loop(anim_name)
 	undo_redo.add_do_method(animation, "set_loop_mode", loop)
 	
-	undo_redo.add_do_method(animation, "")
-
 	# --- 8. Commit the action and notify user ---
 	undo_redo.commit_action()
 	_show_warning_dialog("Keyframes generated for '%s'." % anim_name, "Success")
