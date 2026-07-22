@@ -205,11 +205,11 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l48on"]
 advance_mode = 2
-advance_condition = &"is_mining"
+advance_expression = "is_mining"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4m0gv"]
 advance_mode = 2
-advance_condition = &"!is_mining"
+advance_expression = "!is_mining"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_q6x5r"]
 states/Move/node = SubResource("AnimationNodeBlendSpace1D_c4gpq")
@@ -242,7 +242,6 @@ libraries/ = SubResource("AnimationLibrary_p728j")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1126929104]
 tree_root = SubResource("AnimationNodeStateMachine_q6x5r")
+advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/!is_mining = false
-parameters/conditions/is_mining = false
 parameters/Move/blend_position = 0.0
