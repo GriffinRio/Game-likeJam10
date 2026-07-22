@@ -215,11 +215,11 @@ advance_condition = &"!is_mining"
 states/Move/node = SubResource("AnimationNodeBlendSpace1D_c4gpq")
 states/Move/position = Vector2(393, 100)
 states/Player_Mine/node = SubResource("AnimationNodeAnimation_65n15")
-states/Player_Mine/position = Vector2(567, 100)
+states/Player_Mine/position = Vector2(649, 100)
 transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_642pg"), "Move", "Player_Mine", SubResource("AnimationNodeStateMachineTransition_l48on"), "Player_Mine", "Move", SubResource("AnimationNodeStateMachineTransition_4m0gv")]
 
 [node name="Player" type="CharacterBody2D" unique_id=345442620]
-collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=293915605]
@@ -234,7 +234,7 @@ script = ExtResource("2_eovys")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=305023575]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_65n15")
-animation = &""
+animation = &"Player_Idle"
 autoplay = "Player_Walk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1364681831]
