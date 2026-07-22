@@ -2,8 +2,10 @@ extends Control
 class_name Hotbar
 
 @onready var h_box_container: HBoxContainer = $HBoxContainer
+
 var slots : Array[HotbarSlot]
 var equipped : int
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var children : Array[Node] = h_box_container.get_children()
@@ -11,14 +13,11 @@ func _ready() -> void:
 		slots.append(child)
 	equipped = 0
 	slots[equipped].equip()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	EventBus.inventory_slot_changed.connect(update_hotbar)
+	EventBus.player_equipped_changed.connect(update_equipped)
 	
-func update_hotbar(inventory : Array) -> void:
-	for i in range(len(inventory)):
-		slots[i].item = inventory[i]
+func update_hotbar(index : int, item : Item) -> void:
+	slots[index].update(item)
 
 func update_equipped(new_equipped: int) -> void:
 	slots[equipped].unequip()

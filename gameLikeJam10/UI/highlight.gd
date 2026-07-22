@@ -9,10 +9,9 @@ var stylebox : StyleBoxFlat
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	stylebox = panel.get_theme_stylebox("panel","styleboxflat")
+	stylebox = panel.get_theme_stylebox("panel")
 	stylebox.border_color = Color.LAWN_GREEN
 	DEBUG_label.text = ""
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

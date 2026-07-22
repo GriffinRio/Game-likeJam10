@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 		mouse_position = new_mouse_position
 		highlight.update_position(mouse_position)
 		highlight.reset_break()
-		_on_player_mining(player.is_mining, player.inventory.get_equipped())
+		_on_player_mining(player.is_mining, player.get_equipped())
 	valid_interactable_distance = within_interactable_range(mouse_position)
 	highlight.update_interactable(valid_interactable_distance)
 
@@ -45,17 +45,10 @@ func _on_player_place_block(block: Item) -> void:
 ## Connects player inventory to tile_map destroy
 func _on_tile_map_block_destroyed(block: Block) -> void:
 	player.pickup_item(block.drop)
-	hotbar.update_hotbar(player.inventory.get_inventory())
 
 ## Connects player inventory to tile_map place
 func _on_tile_map_block_placed(block: Block) -> void:
 	player.drop_item(block.drop)
-	hotbar.update_hotbar(player.inventory.get_inventory())
-
-
-func _on_player_change_equipped(equipped_index: int) -> void:
-	hotbar.update_equipped(equipped_index)
-
 
 func _on_player_mining(is_mining: bool, item: Item) -> void:
 	if(valid_interactable_distance and is_mining):

@@ -4,26 +4,12 @@ class_name Inventory
 const SIZE = 10
 ## Array that stores items that player acquires
 var hotbar : Array[Item]
-# TODO: move equipped functionality to player?
-## Stores index of currently equipped Item
-var equipped : int
 
 # Intializes
 func _ready() -> void:
-	equipped = 0
 	hotbar = []
 	for i in range(SIZE):
 		hotbar.append(null)
-
-# TODO: add support for keyboard inventory switching?
-## changes equipped index by 1, positive or negative depending on previous player input
-func change_equipped(direction : int) -> void:
-	# Formula for wrapping array both pos and neg. 
-	# Kinda works like if statements, but one math line. 
-	equipped = ((equipped + direction) % SIZE + SIZE) % SIZE
-
-func change_equipped_direct(index: int) -> void:
-	equipped = (index + SIZE) % SIZE
 
 ## Puts acquired item into inventory. 
 ## Will stack with other versions of it if item is stackable
@@ -32,6 +18,7 @@ func gain_item(item: Item) -> void:
 	var item_index : int = hotbar.find(item)
 	if(item.stackable and item_index >= 0):
 		hotbar[item_index].count += 1
+		EventBus.inventory_slot_changed.emit(item_index, hotbar[item_index])
 	else:
 		var empty_index : int = hotbar.find(null)
 		# TODO: create new instance of item because it always uses same one from block which is weird?
@@ -39,6 +26,7 @@ func gain_item(item: Item) -> void:
 			hotbar[empty_index] = item
 			if(item.stackable):
 				hotbar[empty_index].count = 1
+			EventBus.inventory_slot_changed.emit(empty_index, hotbar[empty_index])
 		else:
 			push_warning("No room for item: " + item.to_string())
 
@@ -52,12 +40,10 @@ func lose_item(item: Item)  -> void:
 			hotbar[item_index] = null
 		else:
 			hotbar[item_index].count -= 1
+		EventBus.inventory_slot_changed.emit(item_index, hotbar[item_index])
 	else:
 		push_error("Item not in inventory")
 
 ## Returns currently equipped item
-func get_equipped() -> Item:
-	return hotbar[equipped]
-
-func get_inventory() -> Array:
-	return hotbar
+func get_item(index : int) -> Item:
+	return hotbar[index]

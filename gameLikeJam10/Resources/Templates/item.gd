@@ -26,15 +26,6 @@ class_name Item
 ## Location in tilemap atlas for the block to be placed
 @export var block : Vector2i
 
-func _to_string() -> String:
-	var output : String = ""
-	output += name + "\n"
-	output += "Stackable: " + str(stackable) + "\n"
-	if(stackable):
-		output += "Count: " + str(count) + "\n"
-	output += "Placeable: " + str(placeable) + "\n"
-	return output
-	
 # Only shows count if stackable and block if placeable. 
 func _validate_property(property: Dictionary) -> void:
 	if(property.name == "count" and not stackable):
@@ -43,4 +34,13 @@ func _validate_property(property: Dictionary) -> void:
 	if(property.name == "block" and not placeable):
 		#property.usage |= PROPERTY_USAGE_READ_ONLY
 		property.usage = PROPERTY_USAGE_NONE
+	
+func _to_string() -> String:
+	var output : String = ""
+	output += name + "\n"
+	output += "Stackable: " + str(stackable) + "\n"
+	if(stackable):
+		output += "Count: " + str(count) + "\n"
+	output += "Placeable: " + str(placeable) + "\n"
+	return output
 	
