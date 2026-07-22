@@ -16,11 +16,12 @@ var RADIUS_X : float
 @onready var inventory : Inventory = $Inventory
 @onready var _animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d : CollisionShape2D = $CollisionShape2D
-
+@onready var animation_tree : AnimationTree = $AnimationTree
 var is_mining : bool
 var equipped : int
 
 func _ready() -> void:
+	animation_tree.active = true
 	var hitbox : RectangleShape2D = collision_shape_2d.shape
 	RADIUS_Y = hitbox.size.y / 2.0
 	RADIUS_X = hitbox.size.x / 2.0
@@ -46,14 +47,15 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration and animation.
 	var direction := Input.get_axis("Move_Left", "Move_Right")
+	animation_tree.set("parameters/Move/blend_position", direction)
+	animation_tree.set("parameters/conditions/is_mining", is_mining)
+	animation_tree.set("parameters/conditions/!is_mining", !is_mining)
+	
 	if direction:
-		_animated_sprite.play("Player_Walk")
 		_animated_sprite.flip_h = (direction < 0)
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if(not is_mining):
-			_animated_sprite.play("Player_Idle")
 
 	move_and_slide()
 
@@ -75,10 +77,6 @@ func _input(event: InputEvent) -> void:
 		is_mining = !is_mining
 		print("mining: " + str(is_mining))
 		mining.emit(is_mining, get_equipped())
-		if(is_mining):
-			_animated_sprite.play("Player_Mine")
-		else:
-			_animated_sprite.play("Player_Idle")
 
 ## changes equipped
 func change_equipped(index : int) -> void:
