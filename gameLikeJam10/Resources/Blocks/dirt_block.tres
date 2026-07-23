@@ -7,6 +7,6 @@
 script = ExtResource("1_l5wj1")
 name = "Dirt"
 tool_type = 2
-health = 200
+break_time = 0.5
 drop = ExtResource("1_j1y7f")
 metadata/_custom_type_script = "uid://dxhlyg6lcklxi"

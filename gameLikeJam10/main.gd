@@ -14,21 +14,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func within_interactable_range(mouse_position: Vector2i) -> bool:
-	var player_tiles : Array[Vector2i] = player.tilemap_position()
-	var interactable : bool = false
-	if(player_tiles.find(mouse_position) == -1):
-		for tile in player_tiles:
-			# print(str(tile) + ": " + str((tile - mouse_position).length()))
-			if((tile - mouse_position).length() < 1.5):
-				interactable = true
-	return interactable
+# TODO: Could change to just be global signals emmited between all these nodes, probably cleaner
 
 func _on_player_start_mining(tile_position: Vector2i, equipped: Item) -> void:
 	var block : Block = tile_map.get_tile(tile_position)
 	# TODO: System for tools speeding up block breaking depending on type.
+	var multiplier : float = 1 / block.break_time
+	if(type_string(typeof(equipped)) == "ItemTools"):
+		var tool : ItemTools  = equipped
+		if(tool.tool_type == block.tool_type):
+			multiplier *= tool.multiplier
 	breaking.update_position(tile_position)
-	breaking.begin_break(1.0)
+	breaking.begin_break(multiplier)
 
 func _on_player_stop_mining() -> void:
 	breaking.reset_break()

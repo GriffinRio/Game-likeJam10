@@ -7,6 +7,6 @@
 script = ExtResource("1_jg2gi")
 name = "Wood"
 tool_type = 1
-health = 100
+break_time = 1.0
 drop = ExtResource("1_6vo7w")
 metadata/_custom_type_script = "uid://dxhlyg6lcklxi"

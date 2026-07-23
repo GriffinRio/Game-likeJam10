@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_m445j")
+multiplier = 1.25
 recipe = Array[ExtResource("1_3jfhu")]([null])
 name = "Wood_Pick"
 metadata/_custom_type_script = "uid://b8su1vseu30ab"

@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="ItemTools" format=3 uid="uid://dl3xfk17vrlmw"]
 
 [ext_resource type="Script" uid="uid://b8su1vseu30ab" path="res://Resources/Templates/item_tools.gd" id="1_7rlk1"]
+[ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_rvhnh"]
 
 [resource]
 script = ExtResource("1_7rlk1")
+multiplier = 1.5
 name = "Stone_Pick"
 metadata/_custom_type_script = "uid://b8su1vseu30ab"

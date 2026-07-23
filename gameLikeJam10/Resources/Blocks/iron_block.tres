@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_mil4s")
 name = "Iron"
-health = 200
+break_time = 4.0
 drop = ExtResource("1_5xn7y")
 metadata/_custom_type_script = "uid://dxhlyg6lcklxi"
