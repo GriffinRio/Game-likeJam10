@@ -20,7 +20,7 @@ func _on_player_start_mining(tile_position: Vector2i, equipped: Item) -> void:
 	var block : Block = tile_map.get_tile(tile_position)
 	# TODO: System for tools speeding up block breaking depending on type.
 	var multiplier : float = 1 / block.break_time
-	if(type_string(typeof(equipped)) == "ItemTools"):
+	if(equipped is ItemTools):
 		var tool : ItemTools  = equipped
 		if(tool.tool_type == block.tool_type):
 			multiplier *= tool.multiplier

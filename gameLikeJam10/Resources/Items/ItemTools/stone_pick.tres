@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_7rlk1")
-multiplier = 1.5
+multiplier = 2.25
 name = "Stone_Pick"
 metadata/_custom_type_script = "uid://b8su1vseu30ab"

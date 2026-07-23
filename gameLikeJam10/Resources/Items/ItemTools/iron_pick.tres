@@ -2,9 +2,15 @@
 
 [ext_resource type="Script" uid="uid://b8su1vseu30ab" path="res://Resources/Templates/item_tools.gd" id="1_1yj0s"]
 [ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_tu0s8"]
+[ext_resource type="Texture2D" uid="uid://dxc7kjcubb3yo" path="res://Assets/Art/Player_Mine.png" id="3_r5xjf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5ce0"]
+atlas = ExtResource("3_r5xjf")
+region = Rect2(49, 19, 16, 17)
 
 [resource]
 script = ExtResource("1_1yj0s")
-multiplier = 2.0
+multiplier = 3.5
 name = "Iron_Pick"
+sprite = SubResource("AtlasTexture_p5ce0")
 metadata/_custom_type_script = "uid://b8su1vseu30ab"
