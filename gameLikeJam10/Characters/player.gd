@@ -48,8 +48,8 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration and animation.
 	var direction := Input.get_axis("Move_Left", "Move_Right")
 	animation_tree.set("parameters/Move/blend_position", direction)
-	animation_tree.set("parameters/conditions/is_mining", is_mining)
-	animation_tree.set("parameters/conditions/!is_mining", !is_mining)
+	# animation_tree.set("parameters/conditions/is_mining", is_mining)
+	# animation_tree.set("parameters/conditions/!is_mining", !is_mining)
 	
 	if direction:
 		_animated_sprite.flip_h = (direction < 0)
