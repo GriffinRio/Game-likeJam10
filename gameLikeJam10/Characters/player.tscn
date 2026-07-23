@@ -195,6 +195,7 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_cbmiu")
 blend_point_1/pos = -1.0
 blend_point_2/node = SubResource("AnimationNodeAnimation_w3rah")
 blend_point_2/pos = 1.0
+value_label = "direction"
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_65n15"]
@@ -230,6 +231,9 @@ shape = SubResource("RectangleShape2D_65n15")
 
 [node name="Inventory" type="Node2D" parent="." unique_id=547418861]
 script = ExtResource("2_eovys")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=357129865]
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=305023575]
 position = Vector2(0, -24)

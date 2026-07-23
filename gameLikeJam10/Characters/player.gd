@@ -3,12 +3,13 @@ class_name Player
 
 ## Emmited when player places a valid block
 signal place_block(block : Vector2i)
-# TODO: Implement item destroying blocks
-## Emmited when player starts mining
-signal mining(is_mining : bool , item : Item)
+signal start_mining(tile_position : Vector2i, equipped: Item)
+signal stop_mining()
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -225.0
+const MINING_DISTANCE = 55.0
+const PLACING_DISTANCE = 55.0
 
 var RADIUS_Y : float
 var RADIUS_X : float
@@ -17,7 +18,10 @@ var RADIUS_X : float
 @onready var _animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d : CollisionShape2D = $CollisionShape2D
 @onready var animation_tree : AnimationTree = $AnimationTree
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
+
 var is_mining : bool
+var tile_being_mined : Vector2i
 var equipped : int
 
 func _ready() -> void:
@@ -25,17 +29,32 @@ func _ready() -> void:
 	var hitbox : RectangleShape2D = collision_shape_2d.shape
 	RADIUS_Y = hitbox.size.y / 2.0
 	RADIUS_X = hitbox.size.x / 2.0
+	ray_cast_2d.position.y -= RADIUS_Y
 	is_mining = false
 	equipped = 0
+	tile_being_mined = Vector2i.MIN
+	EventBus.give_player_item.connect(pickup_item)
+	EventBus.take_player_item.connect(drop_item)
 
 # Handles player place and destory input for holding functionality
 func _process(delta: float) -> void:
-	if(Input.is_action_pressed("Place")):
+	ray_cast_2d.target_position = get_local_mouse_position() + Vector2(0, RADIUS_Y)
+	if(is_mining):
+		var mouse_tile : Vector2i = Tile_Map.map_coord(get_global_mouse_position())
+		if(tile_being_mined != mouse_tile):
+			tile_being_mined = Vector2i.MIN
+			print(mouse_tile)
+			stop_mining.emit()
+			if(valid_tile_to_mine(mouse_tile)):
+				tile_being_mined = mouse_tile
+				start_mining.emit(mouse_tile, get_equipped())
+	elif(Input.is_action_pressed("Place")):
 		var to_place : Item = get_equipped()
 		if(to_place != null and to_place.placeable):
 			place_block.emit(to_place)
 		else:
 			push_warning("No block to place")
+	
 
 # Handles player movement
 func _physics_process(delta: float) -> void:
@@ -75,8 +94,14 @@ func _input(event: InputEvent) -> void:
 		#change_equipped.emit(inventory.equipped)
 	elif(event.is_action("Destroy")):
 		is_mining = !is_mining
+		var mouse_tile : Vector2i = Tile_Map.map_coord(get_global_mouse_position())
+		if(is_mining and valid_tile_to_mine(mouse_tile)):
+			tile_being_mined = mouse_tile
+			start_mining.emit(mouse_tile, get_equipped())
+		else:
+			tile_being_mined = Vector2i.MIN
+			stop_mining.emit()
 		print("mining: " + str(is_mining))
-		mining.emit(is_mining, get_equipped())
 
 ## changes equipped
 func change_equipped(index : int) -> void:
@@ -93,6 +118,17 @@ func pickup_item(item : Item) -> void:
 ## Removes given item from player inventory
 func drop_item(item : Item) -> void:
 	inventory.lose_item(item)
+
+func valid_tile_to_mine(mouse_tile : Vector2i) -> bool:
+	if(ray_cast_2d.is_colliding() and ray_cast_2d.target_position.length() <= MINING_DISTANCE):
+		# gets the collision point and adds the raycast direction to go "in the block" a little more
+		var raycast_tile : Vector2i = Tile_Map.map_coord(ray_cast_2d.get_collision_point() + (ray_cast_2d.target_position.normalized() * 0.01))
+		if(mouse_tile == raycast_tile):
+			return true
+		else:
+			return false
+	else:
+		return false
 	
 func tilemap_position() -> Array[Vector2i]:
 	var corners : Array[Vector2i] = []
@@ -102,7 +138,7 @@ func tilemap_position() -> Array[Vector2i]:
 	var height_sign : int = 1
 	for i in range(2):
 		for j in range(2):
-			corners.append(Tile_Map.map_coord(Vector2(collision_position.x + (RADIUS_X * radius_sign), collision_position.y + (RADIUS_Y * height_sign))))
+			#corners.append(Tile_Map.map_coord(Vector2(collision_position.x + (RADIUS_X * radius_sign), collision_position.y + (RADIUS_Y * height_sign))))
 			radius_sign *= -1
 		height_sign = -1
 		radius_sign = 1
