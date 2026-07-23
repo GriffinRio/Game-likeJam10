@@ -32,7 +32,7 @@ static func get_tiles_in_line(tile_start : Vector2i, tile_end : Vector2i) -> Arr
 	return tiles
 
 func _ready() -> void:
-	pass
+	EventBus.player_place_block.connect(place_block)
 
 func get_tile(tile_position : Vector2i) -> Block :
 	var block: Block = tile_layer.get_cell_tile_data(tile_position).get_custom_data("block_data")
@@ -43,6 +43,9 @@ func place_block(tile_position : Vector2i, block : Vector2i) -> void:
 	if(tile_layer.get_cell_atlas_coords(tile_position) == EMPTY_TILE):
 		tile_layer.set_cell(tile_position, 1, block)
 		var placed : Block = tile_layer.get_cell_tile_data(tile_position).get_custom_data("block_data")
+		EventBus.take_player_item.emit(placed.drop)
+	else:
+		push_error("Tile already full")
 
 ## Makes sure block can be destroyed and then does so. Emits block_destroyed to add block to player inventory
 func destroy_block(tile_position : Vector2i) -> void:

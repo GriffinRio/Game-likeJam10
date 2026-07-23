@@ -2,7 +2,6 @@ extends CharacterBody2D
 class_name Player
 
 ## Emmited when player places a valid block
-signal place_block(block : Vector2i)
 signal start_mining(tile_position : Vector2i, equipped: Item)
 signal stop_mining()
 
@@ -39,19 +38,18 @@ func _ready() -> void:
 # Handles player place and destory input for holding functionality
 func _process(delta: float) -> void:
 	ray_cast_2d.target_position = get_local_mouse_position() + Vector2(0, RADIUS_Y)
+	var mouse_tile : Vector2i = Tile_Map.map_coord(get_global_mouse_position())
 	if(is_mining):
-		var mouse_tile : Vector2i = Tile_Map.map_coord(get_global_mouse_position())
 		if(tile_being_mined != mouse_tile):
 			tile_being_mined = Vector2i.MIN
-			print(mouse_tile)
 			stop_mining.emit()
 			if(valid_tile_to_mine(mouse_tile)):
 				tile_being_mined = mouse_tile
 				start_mining.emit(mouse_tile, get_equipped())
 	elif(Input.is_action_pressed("Place")):
 		var to_place : Item = get_equipped()
-		if(to_place != null and to_place.placeable):
-			place_block.emit(to_place)
+		if(to_place != null and to_place.placeable and valid_placing_tile(mouse_tile)):
+			EventBus.player_place_block.emit(mouse_tile, to_place.block)
 		else:
 			push_warning("No block to place")
 	
@@ -127,6 +125,15 @@ func valid_tile_to_mine(mouse_tile : Vector2i) -> bool:
 			return true
 		else:
 			return false
+	else:
+		return false
+	
+func valid_placing_tile(mouse_tile : Vector2i) -> bool:
+	if(ray_cast_2d.target_position.length() <= PLACING_DISTANCE):
+		if(ray_cast_2d.is_colliding()):
+			return false
+		else:
+			return true
 	else:
 		return false
 	
