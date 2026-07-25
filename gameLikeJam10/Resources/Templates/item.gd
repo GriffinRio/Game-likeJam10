@@ -26,6 +26,14 @@ class_name Item
 ## Location in tilemap atlas for the block to be placed
 @export var block : Vector2i
 
+@export_group("Crafting")
+@export var craftable: bool :
+	# Connects to _validate_property()
+	set(value):
+		craftable = value
+		notify_property_list_changed()
+@export var recipe : Array[Item]
+
 # Only shows count if stackable and block if placeable. 
 func _validate_property(property: Dictionary) -> void:
 	if(property.name == "count" and not stackable):
@@ -33,6 +41,8 @@ func _validate_property(property: Dictionary) -> void:
 		property.usage = PROPERTY_USAGE_NONE
 	if(property.name == "block" and not placeable):
 		#property.usage |= PROPERTY_USAGE_READ_ONLY
+		property.usage = PROPERTY_USAGE_NONE
+	if(property.name == "recipe" and not craftable):
 		property.usage = PROPERTY_USAGE_NONE
 	
 func _to_string() -> String:

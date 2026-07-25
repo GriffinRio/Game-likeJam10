@@ -8,4 +8,5 @@ script = ExtResource("2_tc0yc")
 tool_type = 2
 multiplier = 6.0
 name = "Iron_Shov"
+craftable = true
 metadata/_custom_type_script = "uid://b8su1vseu30ab"

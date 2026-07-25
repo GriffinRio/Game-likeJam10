@@ -8,4 +8,5 @@ script = ExtResource("2_qu06p")
 tool_type = 1
 multiplier = 4.0
 name = "Stone_Axe"
+craftable = true
 metadata/_custom_type_script = "uid://b8su1vseu30ab"

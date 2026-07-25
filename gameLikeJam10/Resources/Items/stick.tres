@@ -6,4 +6,5 @@
 script = ExtResource("1_u67s2")
 name = "Stick"
 stackable = true
+craftable = true
 metadata/_custom_type_script = "uid://dde0u4wrgliw4"

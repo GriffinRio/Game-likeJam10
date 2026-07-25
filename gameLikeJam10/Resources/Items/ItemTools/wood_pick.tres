@@ -7,4 +7,5 @@
 script = ExtResource("1_m445j")
 multiplier = 2.0
 name = "Wood_Pick"
+craftable = true
 metadata/_custom_type_script = "uid://b8su1vseu30ab"
