@@ -33,6 +33,7 @@ static func get_tiles_in_line(tile_start : Vector2i, tile_end : Vector2i) -> Arr
 
 func _ready() -> void:
 	EventBus.player_place_block.connect(place_block)
+	EventBus.breaking_animation_finished.connect(destroy_block)
 
 func get_tile(tile_position : Vector2i) -> Block :
 	var block: Block = tile_layer.get_cell_tile_data(tile_position).get_custom_data("block_data")
@@ -48,10 +49,11 @@ func place_block(tile_position : Vector2i, block : Vector2i) -> void:
 		push_error("Tile already full")
 
 ## Makes sure block can be destroyed and then does so. Emits block_destroyed to add block to player inventory
-func destroy_block(tile_position : Vector2i) -> void:
+func destroy_block(tile_position : Vector2i, give_drop : bool) -> void:
 	if(tile_layer.get_cell_atlas_coords(tile_position) != EMPTY_TILE):
 		var block: Block = tile_layer.get_cell_tile_data(tile_position).get_custom_data("block_data")
 		tile_layer.set_cell(tile_position, -1, EMPTY_TILE)
-		EventBus.give_player_item.emit(block.drop)
+		if(give_drop):
+			EventBus.give_player_item.emit(block.drop)
 	else:
 		push_error("Tile doesn't exist")

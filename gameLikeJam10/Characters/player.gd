@@ -3,7 +3,6 @@ class_name Player
 
 ## Emmited when player places a valid block
 signal start_mining(tile_position : Vector2i, equipped: Item)
-signal stop_mining()
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -225.0
@@ -42,7 +41,7 @@ func _process(delta: float) -> void:
 	if(is_mining):
 		if(tile_being_mined != mouse_tile):
 			tile_being_mined = Vector2i.MIN
-			stop_mining.emit()
+			EventBus.player_stop_mining.emit()
 			if(valid_tile_to_mine(mouse_tile)):
 				tile_being_mined = mouse_tile
 				start_mining.emit(mouse_tile, get_equipped())
@@ -98,7 +97,7 @@ func _input(event: InputEvent) -> void:
 			start_mining.emit(mouse_tile, get_equipped())
 		else:
 			tile_being_mined = Vector2i.MIN
-			stop_mining.emit()
+			EventBus.player_stop_mining.emit()
 		print("mining: " + str(is_mining))
 
 ## changes equipped

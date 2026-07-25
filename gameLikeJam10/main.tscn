@@ -39,5 +39,3 @@ size_flags_vertical = 4
 metadata/_edit_use_anchors_ = true
 
 [connection signal="start_mining" from="Player" to="." method="_on_player_start_mining"]
-[connection signal="stop_mining" from="Player" to="." method="_on_player_stop_mining"]
-[connection signal="finished_break" from="WorldUI/Breaking" to="." method="_on_breaking_finished_break"]
