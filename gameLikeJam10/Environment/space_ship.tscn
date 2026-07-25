@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://p3i034erovwe"]
+
+[ext_resource type="Script" uid="uid://bww0uuk3rffd4" path="res://Environment/space_ship.gd" id="1_mdsso"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uthjk"]
+size = Vector2(48, 48)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uthjk"]
+size = Vector3(48, 48, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mdsso"]
+font_size = 6
+
+[node name="SpaceShip" type="Node2D" unique_id=227148207]
+script = ExtResource("1_mdsso")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1634408108 groups=["Interactable"]]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=233605388]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_uthjk")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1242264519]
+position = Vector2(0, -24)
+mesh = SubResource("BoxMesh_uthjk")
+
+[node name="Interact_Text" type="Control" parent="." unique_id=1169834115]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -19.0
+offset_top = -56.0
+offset_right = 21.0
+offset_bottom = -16.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Interact_Text" unique_id=1238961943]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "E To Interact"
+label_settings = SubResource("LabelSettings_mdsso")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
