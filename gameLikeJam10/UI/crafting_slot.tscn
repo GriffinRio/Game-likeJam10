@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cq0ahleetsyo4"]
+
+[ext_resource type="Texture2D" uid="uid://c6cj8cv0hrd61" path="res://Assets/Art/Sprite-0003.png" id="1_d0hxk"]
+[ext_resource type="Script" uid="uid://choobli5v57dx" path="res://UI/crafting_slot.gd" id="1_tcatj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tcatj"]
+font_size = 11
+
+[node name="CraftingSlot" type="Control" unique_id=386954803]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_tcatj")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1847485111]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_d0hxk")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=68347861]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_tcatj")
