@@ -15,7 +15,6 @@ font_size = 6
 script = ExtResource("1_mdsso")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1634408108 groups=["Interactable"]]
-collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=233605388]
 position = Vector2(0, -24)
