@@ -2,10 +2,14 @@
 
 [ext_resource type="Resource" uid="uid://dsge0vpq37ocn" path="res://Resources/Items/iron.tres" id="1_5xn7y"]
 [ext_resource type="Script" uid="uid://dxhlyg6lcklxi" path="res://Resources/Templates/block.gd" id="1_mil4s"]
+[ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="2_dhhrn"]
+[ext_resource type="Resource" uid="uid://dl3xfk17vrlmw" path="res://Resources/Items/ItemTools/stone_pick.tres" id="3_4vtt8"]
+[ext_resource type="Resource" uid="uid://b5cq0r53qv68l" path="res://Resources/Items/ItemTools/iron_pick.tres" id="4_fmxqo"]
 
 [resource]
 script = ExtResource("1_mil4s")
 name = "Iron"
-break_time = 4.0
+hardness = 3.0
+drop_tools = Array[ExtResource("2_dhhrn")]([ExtResource("3_4vtt8"), ExtResource("4_fmxqo")])
 drop = ExtResource("1_5xn7y")
 metadata/_custom_type_script = "uid://dxhlyg6lcklxi"

@@ -2,10 +2,15 @@
 
 [ext_resource type="Resource" uid="uid://bfevqvnmd64u0" path="res://Resources/Items/stone.tres" id="1_4qaum"]
 [ext_resource type="Script" uid="uid://dxhlyg6lcklxi" path="res://Resources/Templates/block.gd" id="1_wfpd5"]
+[ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="2_ccqew"]
+[ext_resource type="Resource" uid="uid://db2bihgb0hr2a" path="res://Resources/Items/ItemTools/wood_pick.tres" id="3_c3xor"]
+[ext_resource type="Resource" uid="uid://dl3xfk17vrlmw" path="res://Resources/Items/ItemTools/stone_pick.tres" id="4_vm6sp"]
+[ext_resource type="Resource" uid="uid://b5cq0r53qv68l" path="res://Resources/Items/ItemTools/iron_pick.tres" id="5_q30x7"]
 
 [resource]
 script = ExtResource("1_wfpd5")
 name = "Stone"
-break_time = 2.0
+hardness = 1.5
+drop_tools = Array[ExtResource("2_ccqew")]([ExtResource("3_c3xor"), ExtResource("4_vm6sp"), ExtResource("5_q30x7")])
 drop = ExtResource("1_4qaum")
 metadata/_custom_type_script = "uid://dxhlyg6lcklxi"
