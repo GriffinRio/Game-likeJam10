@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemTools" format=3 uid="uid://co3lrqqcaeude"]
+
+[ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_vit3l"]
+[ext_resource type="Script" uid="uid://b8su1vseu30ab" path="res://Resources/Templates/item_tools.gd" id="2_tc0yc"]
+
+[resource]
+script = ExtResource("2_tc0yc")
+tool_type = 2
+multiplier = 6.0
+name = "Iron_Shov"
+metadata/_custom_type_script = "uid://b8su1vseu30ab"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemTools" format=3 uid="uid://b61fwf1ob2lvj"]
+
+[ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_5gyhp"]
+[ext_resource type="Script" uid="uid://b8su1vseu30ab" path="res://Resources/Templates/item_tools.gd" id="2_qu06p"]
+
+[resource]
+script = ExtResource("2_qu06p")
+tool_type = 1
+multiplier = 4.0
+name = "Stone_Axe"
+metadata/_custom_type_script = "uid://b8su1vseu30ab"

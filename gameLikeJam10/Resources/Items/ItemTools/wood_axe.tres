@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemTools" format=3 uid="uid://b4jyoedbbbocb"]
+
+[ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_37ys8"]
+[ext_resource type="Script" uid="uid://b8su1vseu30ab" path="res://Resources/Templates/item_tools.gd" id="2_55nev"]
+
+[resource]
+script = ExtResource("2_55nev")
+tool_type = 1
+multiplier = 2.0
+name = "Wood_Axe"
+metadata/_custom_type_script = "uid://b8su1vseu30ab"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemTools" format=3 uid="uid://dnpxycrqs3o2"]
+
+[ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_p5b34"]
+[ext_resource type="Script" uid="uid://b8su1vseu30ab" path="res://Resources/Templates/item_tools.gd" id="2_sm5w0"]
+
+[resource]
+script = ExtResource("2_sm5w0")
+multiplier = 2.0
+name = "Wood_Shov"
+metadata/_custom_type_script = "uid://b8su1vseu30ab"

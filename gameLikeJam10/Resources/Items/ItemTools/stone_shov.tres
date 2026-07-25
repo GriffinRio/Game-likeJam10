@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemTools" format=3 uid="uid://djhbsneeu0bgn"]
+
+[ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_rdywh"]
+[ext_resource type="Script" uid="uid://b8su1vseu30ab" path="res://Resources/Templates/item_tools.gd" id="2_ad1ku"]
+
+[resource]
+script = ExtResource("2_ad1ku")
+tool_type = 2
+multiplier = 4.0
+name = "Stone_Shovel"
+metadata/_custom_type_script = "uid://b8su1vseu30ab"
