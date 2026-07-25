@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://choobli5v57dx" path="res://UI/crafting_slot.gd" id="1_tcatj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tcatj"]
-font_size = 11
+font_size = 6
 
 [node name="CraftingSlot" type="Control" unique_id=386954803]
 custom_minimum_size = Vector2(24, 24)

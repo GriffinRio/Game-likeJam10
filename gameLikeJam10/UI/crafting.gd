@@ -8,12 +8,16 @@ const CRAFTING_SLOT = preload("uid://cq0ahleetsyo4")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	EventBus.crafting.connect(crafting)
+	visible = false
 	for recipe in recipes:
 		var new_slot : CraftingSlot = CRAFTING_SLOT.instantiate()
 		new_slot.item = recipe
 		grid_container.add_child(new_slot)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func crafting(currently_crafting : bool) -> void:
+	visible = currently_crafting

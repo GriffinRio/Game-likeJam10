@@ -114,7 +114,7 @@ func _input(event: InputEvent) -> void:
 					ship.interact()
 		else:
 			crafting = false
-			print("stoppp")
+			EventBus.crafting.emit(false)
 ## changes equipped
 func change_equipped(index : int) -> void:
 	equipped = (index + inventory.SIZE) % inventory.SIZE
