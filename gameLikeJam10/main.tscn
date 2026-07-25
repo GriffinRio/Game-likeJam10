@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cg211pusphqds" path="res://Environment/tile_map.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://qntxa88dg8jv" path="res://UI/hotbar.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://ci1r1205qqwnk" path="res://UI/breaking.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://p3i034erovwe" path="res://Environment/space_ship.tscn" id="6_7mycd"]
 
 [node name="Main" type="Node2D" unique_id=1355193467]
 script = ExtResource("1_h2yge")
@@ -15,6 +16,7 @@ position = Vector2(304, 203)
 [node name="TileMap" parent="." unique_id=968644839 instance=ExtResource("2_0xm2m")]
 
 [node name="WorldUI" type="CanvasLayer" parent="." unique_id=1472346036]
+layer = 5
 follow_viewport_enabled = true
 
 [node name="Breaking" parent="WorldUI" unique_id=1303803340 instance=ExtResource("5_lquwl")]
@@ -37,5 +39,9 @@ grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 metadata/_edit_use_anchors_ = true
+
+[node name="SpaceShip" parent="." unique_id=227148207 instance=ExtResource("6_7mycd")]
+z_index = -1
+position = Vector2(312, 264)
 
 [connection signal="start_mining" from="Player" to="." method="_on_player_start_mining"]
