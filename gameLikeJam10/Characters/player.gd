@@ -17,10 +17,12 @@ var RADIUS_X : float
 @onready var collision_shape_2d : CollisionShape2D = $CollisionShape2D
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
+@onready var area_2d: Area2D = $Area2D
 
 var is_mining : bool
 var tile_being_mined : Vector2i
 var equipped : int
+var crafting : bool
 
 func _ready() -> void:
 	animation_tree.active = true
@@ -29,6 +31,7 @@ func _ready() -> void:
 	RADIUS_X = hitbox.size.x / 2.0
 	ray_cast_2d.position.y -= RADIUS_Y
 	is_mining = false
+	crafting = false
 	equipped = 0
 	tile_being_mined = Vector2i.MIN
 	EventBus.give_player_item.connect(pickup_item)
@@ -38,40 +41,42 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	ray_cast_2d.target_position = get_local_mouse_position() + Vector2(0, RADIUS_Y)
 	var mouse_tile : Vector2i = Tile_Map.map_coord(get_global_mouse_position())
-	if(is_mining):
-		if(tile_being_mined != mouse_tile):
-			tile_being_mined = Vector2i.MIN
-			EventBus.player_stop_mining.emit()
-			if(valid_tile_to_mine(mouse_tile)):
-				tile_being_mined = mouse_tile
-				start_mining.emit(mouse_tile, get_equipped())
-	elif(Input.is_action_pressed("Place")):
-		var to_place : Item = get_equipped()
-		if(to_place != null and to_place.placeable and valid_placing_tile(mouse_tile)):
-			EventBus.player_place_block.emit(mouse_tile, to_place.block)
-		else:
-			push_warning("No block to place")
+	if(not crafting):
+		if(is_mining):
+			if(tile_being_mined != mouse_tile):
+				tile_being_mined = Vector2i.MIN
+				EventBus.player_stop_mining.emit()
+				if(valid_tile_to_mine(mouse_tile)):
+					tile_being_mined = mouse_tile
+					start_mining.emit(mouse_tile, get_equipped())
+		elif(Input.is_action_pressed("Place")):
+			var to_place : Item = get_equipped()
+			if(to_place != null and to_place.placeable and valid_placing_tile(mouse_tile)):
+				EventBus.player_place_block.emit(mouse_tile, to_place.block)
+			else:
+				push_warning("No block to place")
 	
 
 # Handles player movement
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
-	if Input.is_action_pressed("Jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration and animation.
-	var direction := Input.get_axis("Move_Left", "Move_Right")
-	animation_tree.set("parameters/Move/blend_position", direction)
-	# animation_tree.set("parameters/conditions/is_mining", is_mining)
-	# animation_tree.set("parameters/conditions/!is_mining", !is_mining)
 	
-	if direction:
-		_animated_sprite.flip_h = (direction < 0)
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if(not crafting):
+		if Input.is_action_pressed("Jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+
+		# Get the input direction and handle the movement/deceleration and animation.
+		var direction := Input.get_axis("Move_Left", "Move_Right")
+		animation_tree.set("parameters/Move/blend_position", direction)
+		# animation_tree.set("parameters/conditions/is_mining", is_mining)
+		# animation_tree.set("parameters/conditions/!is_mining", !is_mining)
+		
+		if direction:
+			_animated_sprite.flip_h = (direction < 0)
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
 
@@ -89,7 +94,7 @@ func _input(event: InputEvent) -> void:
 		var keypress : InputEventKey = event
 		change_equipped(keypress.keycode - 49)
 		#change_equipped.emit(inventory.equipped)
-	elif(event.is_action("Destroy")):
+	elif(event.is_action("Destroy") and not crafting):
 		is_mining = !is_mining
 		var mouse_tile : Vector2i = Tile_Map.map_coord(get_global_mouse_position())
 		if(is_mining and valid_tile_to_mine(mouse_tile)):
@@ -98,8 +103,18 @@ func _input(event: InputEvent) -> void:
 		else:
 			tile_being_mined = Vector2i.MIN
 			EventBus.player_stop_mining.emit()
-		print("mining: " + str(is_mining))
-
+	elif(event.is_action_pressed("Interact")):
+		if(not crafting):
+			for area in area_2d.get_overlapping_areas():
+				if(area.is_in_group("Interactable")):
+					var ship : SpaceShip = area.get_parent()
+					crafting = true
+					is_mining = false
+					EventBus.player_stop_mining.emit()
+					ship.interact()
+		else:
+			crafting = false
+			print("stoppp")
 ## changes equipped
 func change_equipped(index : int) -> void:
 	equipped = (index + inventory.SIZE) % inventory.SIZE

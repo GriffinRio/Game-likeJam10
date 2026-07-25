@@ -8,6 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65n15"]
 size = Vector2(17, 39)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l48on"]
+size = Vector2(17, 39)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
 atlas = ExtResource("3_vb825")
 region = Rect2(24, 0, 24, 48)
@@ -220,12 +223,19 @@ states/Player_Mine/position = Vector2(649, 100)
 transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_642pg"), "Move", "Player_Mine", SubResource("AnimationNodeStateMachineTransition_l48on"), "Player_Mine", "Move", SubResource("AnimationNodeStateMachineTransition_4m0gv")]
 
 [node name="Player" type="CharacterBody2D" unique_id=345442620]
+z_index = 1
 collision_mask = 2
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=293915605]
 position = Vector2(-0.5, -19.5)
 shape = SubResource("RectangleShape2D_65n15")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=108452078]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1903190749]
+position = Vector2(-0.5, -19.5)
+shape = SubResource("RectangleShape2D_l48on")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1141743126]
 
