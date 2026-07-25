@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://blxs2xi6m6w65"]
+
+[ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_u67s2"]
+
+[resource]
+script = ExtResource("1_u67s2")
+name = "Stick"
+stackable = true
+metadata/_custom_type_script = "uid://dde0u4wrgliw4"
