@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bu6d2d4n0lcxb" path="res://Assets/Art/BackgroundLayer_1.png" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://drdlmnwyothnc" path="res://Assets/Art/BackgroundLayer_3.png" id="10_4c57u"]
 [ext_resource type="Texture2D" uid="uid://dh6d72wrcwynf" path="res://Assets/Art/smoke.png" id="10_efxa6"]
+[ext_resource type="Texture2D" uid="uid://cbjyavgj6vo60" path="res://Assets/Art/BigFuckingWorm.png" id="11_efxa6"]
 
 [sub_resource type="Gradient" id="Gradient_dg77c"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -29,6 +30,7 @@ script = ExtResource("1_h2yge")
 position = Vector2(304, 203)
 
 [node name="TileMap" parent="." unique_id=968644839 instance=ExtResource("2_0xm2m")]
+position = Vector2(34, -11)
 
 [node name="SpaceShip" parent="." unique_id=227148207 instance=ExtResource("6_7mycd")]
 z_index = -1
@@ -39,6 +41,7 @@ layer = 5
 follow_viewport_enabled = true
 
 [node name="Breaking" parent="WorldUI" unique_id=1303803340 instance=ExtResource("5_lquwl")]
+metadata/_edit_use_anchors_ = true
 
 [node name="CameraUI" type="CanvasLayer" parent="." unique_id=399838894]
 layer = 10
@@ -63,6 +66,7 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 14
 anchor_top = 0.5
 anchor_bottom = 0.5
+metadata/_edit_use_anchors_ = true
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=457185960]
 texture_filter = 1
@@ -70,8 +74,8 @@ scroll_scale = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1078446911]
 z_index = -4
-position = Vector2(327, 122.999985)
-scale = Vector2(0.8307943, 0.5611111)
+position = Vector2(352, 113)
+scale = Vector2(0.90445966, 0.63796294)
 texture = ExtResource("8_5vw27")
 
 [node name="Parallax2D" type="Parallax2D" parent="Parallax2D" unique_id=1307672331]
@@ -91,5 +95,10 @@ position = Vector2(308, 210)
 amount = 3
 texture = ExtResource("10_efxa6")
 process_material = SubResource("ParticleProcessMaterial_w48qg")
+
+[node name="BigFuckingWorm" type="Sprite2D" parent="." unique_id=2064776359]
+position = Vector2(297.00003, 175.00002)
+scale = Vector2(1.2727274, 1.4166666)
+texture = ExtResource("11_efxa6")
 
 [connection signal="start_mining" from="Player" to="." method="_on_player_start_mining"]
