@@ -9,6 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://dnp8py6gtxupb" path="res://UI/crafting.tscn" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://bu6d2d4n0lcxb" path="res://Assets/Art/BackgroundLayer_1.png" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://drdlmnwyothnc" path="res://Assets/Art/BackgroundLayer_3.png" id="10_4c57u"]
+[ext_resource type="Texture2D" uid="uid://dh6d72wrcwynf" path="res://Assets/Art/smoke.png" id="10_efxa6"]
+
+[sub_resource type="Gradient" id="Gradient_dg77c"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ycdy4"]
+gradient = SubResource("Gradient_dg77c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w48qg"]
+particle_flag_disable_z = true
+gravity = Vector3(0, -98, 0)
+color_ramp = SubResource("GradientTexture1D_ycdy4")
 
 [node name="Main" type="Node2D" unique_id=1355193467]
 script = ExtResource("1_h2yge")
@@ -58,16 +70,26 @@ scroll_scale = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1078446911]
 z_index = -4
-position = Vector2(327, 200)
-scale = Vector2(0.8307943, 0.8469329)
+position = Vector2(327, 122.999985)
+scale = Vector2(0.8307943, 0.5611111)
 texture = ExtResource("8_5vw27")
 
 [node name="Parallax2D" type="Parallax2D" parent="Parallax2D" unique_id=1307672331]
-scroll_offset = Vector2(32, -24)
+texture_filter = 1
+scroll_offset = Vector2(63, -18)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/Parallax2D" unique_id=1941426674]
+z_index = -4
 texture_filter = 1
-position = Vector2(365, 100)
+position = Vector2(391.00003, 113.00001)
+scale = Vector2(0.82545567, 0.8215856)
 texture = ExtResource("10_4c57u")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=970968443]
+z_index = -2
+position = Vector2(308, 210)
+amount = 3
+texture = ExtResource("10_efxa6")
+process_material = SubResource("ParticleProcessMaterial_w48qg")
 
 [connection signal="start_mining" from="Player" to="." method="_on_player_start_mining"]
