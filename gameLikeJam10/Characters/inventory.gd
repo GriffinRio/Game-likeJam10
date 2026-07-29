@@ -35,7 +35,7 @@ func gain_item(item: Item, count : int) -> void:
 func lose_item(item: Item, count : int)  -> void:
 	var item_index : int = -1
 	for i in hotbar.size():
-		if hotbar[i].name == item.name:
+		if hotbar[i] != null and hotbar[i].name == item.name:
 			item_index = i
 			break
 	if(item_index >= 0):

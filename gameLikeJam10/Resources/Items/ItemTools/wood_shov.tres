@@ -48,7 +48,7 @@ metadata/_custom_type_script = "uid://dde0u4wrgliw4"
 [resource]
 script = ExtResource("2_sm5w0")
 multiplier = 2.0
-name = "Wood_Shovel"
+name = "Wood_Shov"
 sprite = ExtResource("3_sm5w0")
 craftable = true
 recipe = Array[ExtResource("1_p5b34")]([SubResource("Resource_pvavk"), SubResource("Resource_iroou")])
