@@ -7,10 +7,12 @@ const CRAFTING_SLOT = preload("uid://cq0ahleetsyo4")
 @export var recipes : Array[Item]
 
 var crafting_slot_nodes : Array[CraftingSlot] 
+var inventory : Array[Item]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventBus.crafting.connect(crafting)
+	EventBus.inventory_slot_changed.connect(update_inventory)
 	visible = false
 	for recipe in recipes:
 		var new_slot : CraftingSlot = CRAFTING_SLOT.instantiate()
@@ -22,8 +24,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func crafting(currently_crafting : bool, inventory: Array[Item]) -> void:
+func crafting(currently_crafting : bool, new_inventory: Array[Item]) -> void:
 	visible = currently_crafting
+	inventory = new_inventory
 	if(visible):
+		for slot in crafting_slot_nodes:
+			slot.update_recipe(inventory)
+
+func update_inventory(index : int, item : Item) -> void:
+	if(visible):	
+		inventory[index] = item
 		for slot in crafting_slot_nodes:
 			slot.update_recipe(inventory)

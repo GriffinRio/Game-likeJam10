@@ -20,11 +20,6 @@ func _ready() -> void:
 		new_item_display.goal = need
 		v_box_container.add_child(new_item_display)
 		slot_items.append(new_item_display)
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func update_recipe(inventory : Array[Item]) -> void:
 	var craftable : bool = true
@@ -35,14 +30,17 @@ func update_recipe(inventory : Array[Item]) -> void:
 			var item_slot : Item = result[0]
 			if(item_slot.count < need.count):
 				craftable = false
-			slot_items[i].update_count(item_slot)
+			slot_items[i].update_count(item_slot.count)
 		else:
 			craftable = false
-	if(not craftable):
+			slot_items[i].update_count(0)
+	if(item.recipe.size() == 0 or not craftable):
 		button.disabled = true
 	else:
 		button.disabled = false
 		
 
 func _on_button_pressed() -> void:
-	EventBus.emit_signal("give_player_item", item)
+	for need in item.recipe:
+		EventBus.take_player_item.emit(need, need.count)
+	EventBus.give_player_item.emit(item, item.craft_count)
