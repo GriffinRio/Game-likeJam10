@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ci1r1205qqwnk" path="res://UI/breaking.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://p3i034erovwe" path="res://Environment/space_ship.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dnp8py6gtxupb" path="res://UI/crafting.tscn" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://bu6d2d4n0lcxb" path="res://Assets/Art/BackgroundLayer_1.png" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://drdlmnwyothnc" path="res://Assets/Art/BackgroundLayer_3.png" id="10_4c57u"]
 
 [node name="Main" type="Node2D" unique_id=1355193467]
 script = ExtResource("1_h2yge")
@@ -49,5 +51,23 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 14
 anchor_top = 0.5
 anchor_bottom = 0.5
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=457185960]
+texture_filter = 1
+scroll_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1078446911]
+z_index = -4
+position = Vector2(327, 200)
+scale = Vector2(0.8307943, 0.8469329)
+texture = ExtResource("8_5vw27")
+
+[node name="Parallax2D" type="Parallax2D" parent="Parallax2D" unique_id=1307672331]
+scroll_offset = Vector2(32, -24)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/Parallax2D" unique_id=1941426674]
+texture_filter = 1
+position = Vector2(365, 100)
+texture = ExtResource("10_4c57u")
 
 [connection signal="start_mining" from="Player" to="." method="_on_player_start_mining"]
