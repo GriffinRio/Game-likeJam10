@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c4r0iihvxpeaq" path="res://UI/crafting_slot_item.gd" id="1_picr3"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_piekg"]
-font_size = 6
-
 [node name="CraftingSlotItem" type="Control" unique_id=1272586905]
 custom_minimum_size = Vector2(16, 15)
 layout_mode = 3
@@ -25,5 +22,5 @@ layout_mode = 0
 offset_top = 9.0
 offset_right = 16.0
 offset_bottom = 18.0
-label_settings = SubResource("LabelSettings_piekg")
+theme_override_font_sizes/font_size = 6
 vertical_alignment = 2
