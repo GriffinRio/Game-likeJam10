@@ -1,7 +1,22 @@
 [gd_resource type="Resource" script_class="ItemTools" format=3 uid="uid://dd3vgt2hfo2kp"]
 
 [ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_s1yca"]
+[ext_resource type="Texture2D" uid="uid://c6cj8cv0hrd61" path="res://Assets/Art/Sprite-0003.png" id="2_3u04q"]
 [ext_resource type="Script" uid="uid://b8su1vseu30ab" path="res://Resources/Templates/item_tools.gd" id="2_kpklg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb5dv"]
+atlas = ExtResource("2_3u04q")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="Resource" id="Resource_e1vbc"]
+script = ExtResource("1_s1yca")
+name = "Iron"
+sprite = SubResource("AtlasTexture_nb5dv")
+stackable = true
+count = 3
+placeable = true
+block = Vector2i(1, 1)
+metadata/_custom_type_script = "uid://dde0u4wrgliw4"
 
 [resource]
 script = ExtResource("2_kpklg")
@@ -9,4 +24,5 @@ tool_type = 1
 multiplier = 6.0
 name = "Iron_Axe"
 craftable = true
+recipe = Array[ExtResource("1_s1yca")]([SubResource("Resource_e1vbc")])
 metadata/_custom_type_script = "uid://b8su1vseu30ab"

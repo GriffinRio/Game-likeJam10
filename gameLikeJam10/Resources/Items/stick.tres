@@ -1,10 +1,26 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://blxs2xi6m6w65"]
 
 [ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_u67s2"]
+[ext_resource type="Texture2D" uid="uid://c6cj8cv0hrd61" path="res://Assets/Art/Sprite-0003.png" id="2_h8ppb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7cti"]
+atlas = ExtResource("2_h8ppb")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="Resource" id="Resource_8kkxd"]
+script = ExtResource("1_u67s2")
+name = "Wood"
+sprite = SubResource("AtlasTexture_p7cti")
+stackable = true
+count = 2
+placeable = true
+block = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://dde0u4wrgliw4"
 
 [resource]
 script = ExtResource("1_u67s2")
 name = "Stick"
 stackable = true
 craftable = true
+recipe = Array[ExtResource("1_u67s2")]([SubResource("Resource_8kkxd")])
 metadata/_custom_type_script = "uid://dde0u4wrgliw4"
