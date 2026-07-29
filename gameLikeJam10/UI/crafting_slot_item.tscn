@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://daiy6bh2s3g1h"]
+
+[ext_resource type="Script" uid="uid://c4r0iihvxpeaq" path="res://UI/crafting_slot_item.gd" id="1_picr3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_piekg"]
+font_size = 6
+
+[node name="CraftingSlotItem" type="Control" unique_id=1272586905]
+custom_minimum_size = Vector2(16, 15)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_picr3")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=11430954]
+custom_minimum_size = Vector2(16, 6)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 10.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Count" type="Label" parent="." unique_id=584723143]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 0
+offset_top = 9.0
+offset_right = 16.0
+offset_bottom = 18.0
+label_settings = SubResource("LabelSettings_piekg")
+vertical_alignment = 2
