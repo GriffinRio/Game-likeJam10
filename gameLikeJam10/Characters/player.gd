@@ -49,6 +49,7 @@ func _process(delta: float) -> void:
 				if(valid_tile_to_mine(mouse_tile)):
 					tile_being_mined = mouse_tile
 					start_mining.emit(mouse_tile, get_equipped())
+
 		elif(Input.is_action_pressed("Place")):
 			var to_place : Item = get_equipped()
 			if(to_place != null and to_place.placeable and valid_placing_tile(mouse_tile)):
@@ -85,15 +86,12 @@ func _input(event: InputEvent) -> void:
 	if(event.is_action_pressed("Switch_Item_Up")):
 		var new_index : int = ((equipped - 1) + inventory.SIZE) % inventory.SIZE
 		change_equipped(new_index)
-		#change_equipped.emit(inventory.equipped)
 	elif(event.is_action_pressed("Switch_Item_Down")):
 		var new_index : int = (equipped + 1) % inventory.SIZE
 		change_equipped(new_index)
-		#change_equipped.emit(inventory.equipped)
 	elif(event.is_action_pressed("Direct_Item_Switch")):
 		var keypress : InputEventKey = event
 		change_equipped(keypress.keycode - 49)
-		#change_equipped.emit(inventory.equipped)
 	elif(event.is_action("Destroy") and not crafting):
 		is_mining = !is_mining
 		var mouse_tile : Vector2i = Tile_Map.map_coord(get_global_mouse_position())
@@ -119,6 +117,9 @@ func _input(event: InputEvent) -> void:
 func change_equipped(index : int) -> void:
 	equipped = (index + inventory.SIZE) % inventory.SIZE
 	EventBus.player_equipped_changed.emit(equipped)
+	if(is_mining):
+		EventBus.player_stop_mining.emit()
+		start_mining.emit(tile_being_mined, get_equipped())
 
 func get_equipped() -> Item:
 	return inventory.get_item(equipped)
