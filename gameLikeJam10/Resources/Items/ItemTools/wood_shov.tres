@@ -8,4 +8,5 @@ script = ExtResource("2_sm5w0")
 multiplier = 2.0
 name = "Wood_Shov"
 craftable = true
+craft_count = 1
 metadata/_custom_type_script = "uid://b8su1vseu30ab"

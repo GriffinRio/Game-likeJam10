@@ -8,4 +8,5 @@ script = ExtResource("1_7rlk1")
 multiplier = 4.0
 name = "Stone_Pick"
 craftable = true
+craft_count = 1
 metadata/_custom_type_script = "uid://b8su1vseu30ab"

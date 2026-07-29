@@ -8,4 +8,5 @@ script = ExtResource("1_1yj0s")
 multiplier = 6.0
 name = "Iron_Pick"
 craftable = true
+craft_count = 1
 metadata/_custom_type_script = "uid://b8su1vseu30ab"

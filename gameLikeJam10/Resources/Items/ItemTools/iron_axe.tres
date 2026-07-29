@@ -16,6 +16,7 @@ stackable = true
 count = 3
 placeable = true
 block = Vector2i(1, 1)
+craft_count = null
 metadata/_custom_type_script = "uid://dde0u4wrgliw4"
 
 [resource]
@@ -25,4 +26,5 @@ multiplier = 6.0
 name = "Iron_Axe"
 craftable = true
 recipe = Array[ExtResource("1_s1yca")]([SubResource("Resource_e1vbc")])
+craft_count = 1
 metadata/_custom_type_script = "uid://b8su1vseu30ab"
