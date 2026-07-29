@@ -1,29 +1,45 @@
 [gd_scene format=3 uid="uid://cq0ahleetsyo4"]
 
-[ext_resource type="Texture2D" uid="uid://c6cj8cv0hrd61" path="res://Assets/Art/Sprite-0003.png" id="1_d0hxk"]
 [ext_resource type="Script" uid="uid://choobli5v57dx" path="res://UI/crafting_slot.gd" id="1_tcatj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tcatj"]
 font_size = 6
 
 [node name="CraftingSlot" type="Control" unique_id=386954803]
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_tcatj")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1847485111]
+[node name="Button" type="Button" parent="." unique_id=201866834]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_d0hxk")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1847485111]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+mouse_filter = 2
 expand_mode = 1
 
 [node name="Label" type="Label" parent="." unique_id=68347861]
+custom_minimum_size = Vector2(48, 16)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_top = 32.0
+offset_right = 48.0
+offset_bottom = 48.0
 label_settings = SubResource("LabelSettings_tcatj")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1478787488]
+custom_minimum_size = Vector2(16, 32)
+layout_mode = 0
+offset_left = 32.0
+offset_right = 48.0
+offset_bottom = 32.0
+theme_override_constants/separation = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

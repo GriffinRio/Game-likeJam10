@@ -4,9 +4,10 @@
 [ext_resource type="Script" uid="uid://dw86rjjvcq3at" path="res://UI/hotbar.gd" id="1_iqjj6"]
 
 [node name="Hotbar" type="Control" unique_id=1187527943]
+custom_minimum_size = Vector2(356, 50)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 396.0
+offset_right = 356.0
 offset_bottom = 50.0
 script = ExtResource("1_iqjj6")
 

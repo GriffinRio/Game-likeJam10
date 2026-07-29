@@ -15,7 +15,7 @@ border_color = Color(0.6745098, 0.6745098, 0.6745098, 1)
 default_font_size = 4
 
 [node name="HotbarSlot" type="Control" unique_id=786506758]
-custom_minimum_size = Vector2(36, 36)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 24.0
