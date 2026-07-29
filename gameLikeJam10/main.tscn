@@ -47,30 +47,25 @@ metadata/_edit_use_anchors_ = true
 layer = 10
 
 [node name="Hotbar" parent="CameraUI" unique_id=1187527943 instance=ExtResource("4_1bvp3")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -50.0
-offset_right = 200.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-metadata/_edit_use_anchors_ = true
+offset_left = 142.0
+offset_top = 300.0
+offset_right = 498.0
+offset_bottom = 350.0
 
 [node name="Crafting" parent="CameraUI" unique_id=1377148634 instance=ExtResource("7_272bh")]
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-metadata/_edit_use_anchors_ = true
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=457185960]
 texture_filter = 1
 scroll_scale = Vector2(0.2, 0.2)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1078446911]
 z_index = -4

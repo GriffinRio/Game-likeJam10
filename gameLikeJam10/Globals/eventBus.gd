@@ -14,4 +14,4 @@ signal breaking_animation_finished(tile_position : Vector2i, give_drop : bool)
 signal give_player_item(item : Item)
 signal take_player_item(item : Item)
 
-signal crafting(currently_crafting : bool)
+signal crafting(currently_crafting : bool, new_inventory : Array[Item])

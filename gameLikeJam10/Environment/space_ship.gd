@@ -16,6 +16,3 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	interact_text.visible = false
-
-func interact() -> void:
-	EventBus.crafting.emit(true)

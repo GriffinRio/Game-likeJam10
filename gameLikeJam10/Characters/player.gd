@@ -111,10 +111,10 @@ func _input(event: InputEvent) -> void:
 					crafting = true
 					is_mining = false
 					EventBus.player_stop_mining.emit()
-					ship.interact()
+					EventBus.crafting.emit(true, inventory.hotbar)
 		else:
 			crafting = false
-			EventBus.crafting.emit(false)
+			EventBus.crafting.emit(false, inventory.hotbar)
 ## changes equipped
 func change_equipped(index : int) -> void:
 	equipped = (index + inventory.SIZE) % inventory.SIZE

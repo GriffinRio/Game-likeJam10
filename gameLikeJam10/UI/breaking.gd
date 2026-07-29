@@ -23,7 +23,6 @@ func update_position(mouse_position : Vector2i) -> void:
 	DEBUG_label.text = str(mouse_position)
 
 func begin_break(block : Block, equipped : Item) -> void:
-	# TODO: System for tools speeding up block breaking depending on type.
 	var break_time : float = block.hardness
 	if(equipped is ItemTools):
 		var tool : ItemTools = equipped
