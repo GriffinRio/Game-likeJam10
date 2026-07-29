@@ -2,11 +2,55 @@
 
 [ext_resource type="Script" uid="uid://b8su1vseu30ab" path="res://Resources/Templates/item_tools.gd" id="1_1yj0s"]
 [ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_tu0s8"]
+[ext_resource type="Texture2D" uid="uid://c6cj8cv0hrd61" path="res://Assets/Art/Sprite-0003.png" id="2_5hw8w"]
+[ext_resource type="Texture2D" uid="uid://1r1wjrqyesv5" path="res://Assets/Art/Items/Stick.png" id="3_32uex"]
+[ext_resource type="Texture2D" uid="uid://dubsi8j0tqoqm" path="res://Assets/Art/Items/IronPick.png" id="3_r5xjf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7cti"]
+atlas = ExtResource("2_5hw8w")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="Resource" id="Resource_8kkxd"]
+script = ExtResource("1_tu0s8")
+name = "Wood"
+sprite = SubResource("AtlasTexture_p7cti")
+stackable = true
+count = 2
+placeable = true
+block = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://dde0u4wrgliw4"
+
+[sub_resource type="Resource" id="Resource_le0ur"]
+script = ExtResource("1_tu0s8")
+name = "Stick"
+sprite = ExtResource("3_32uex")
+stackable = true
+count = 2
+craftable = true
+recipe = Array[ExtResource("1_tu0s8")]([SubResource("Resource_8kkxd")])
+craft_count = 4
+metadata/_custom_type_script = "uid://dde0u4wrgliw4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb5dv"]
+atlas = ExtResource("2_5hw8w")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="Resource" id="Resource_2jaco"]
+script = ExtResource("1_tu0s8")
+name = "Iron"
+sprite = SubResource("AtlasTexture_nb5dv")
+stackable = true
+count = 3
+placeable = true
+block = Vector2i(1, 1)
+metadata/_custom_type_script = "uid://dde0u4wrgliw4"
 
 [resource]
 script = ExtResource("1_1yj0s")
 multiplier = 6.0
 name = "Iron_Pick"
+sprite = ExtResource("3_r5xjf")
 craftable = true
+recipe = Array[ExtResource("1_tu0s8")]([SubResource("Resource_le0ur"), SubResource("Resource_2jaco")])
 craft_count = 1
 metadata/_custom_type_script = "uid://b8su1vseu30ab"

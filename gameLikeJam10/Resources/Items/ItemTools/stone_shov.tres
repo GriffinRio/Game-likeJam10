@@ -2,12 +2,55 @@
 
 [ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="1_rdywh"]
 [ext_resource type="Script" uid="uid://b8su1vseu30ab" path="res://Resources/Templates/item_tools.gd" id="2_ad1ku"]
+[ext_resource type="Texture2D" uid="uid://c6cj8cv0hrd61" path="res://Assets/Art/Sprite-0003.png" id="2_gbdxs"]
+[ext_resource type="Texture2D" uid="uid://dtp3kpdcdy7wu" path="res://Assets/Art/Items/StoneShovel.png" id="3_ad1ku"]
+[ext_resource type="Texture2D" uid="uid://1r1wjrqyesv5" path="res://Assets/Art/Items/Stick.png" id="3_ai620"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7cti"]
+atlas = ExtResource("2_gbdxs")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="Resource" id="Resource_8kkxd"]
+script = ExtResource("1_rdywh")
+name = "Wood"
+sprite = SubResource("AtlasTexture_p7cti")
+stackable = true
+count = 2
+placeable = true
+block = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://dde0u4wrgliw4"
+
+[sub_resource type="Resource" id="Resource_awxqo"]
+script = ExtResource("1_rdywh")
+name = "Stick"
+sprite = ExtResource("3_ai620")
+stackable = true
+count = 2
+craftable = true
+recipe = Array[ExtResource("1_rdywh")]([SubResource("Resource_8kkxd")])
+craft_count = 4
+metadata/_custom_type_script = "uid://dde0u4wrgliw4"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwbyh"]
+atlas = ExtResource("2_gbdxs")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="Resource" id="Resource_qbxra"]
+script = ExtResource("1_rdywh")
+name = "Stone"
+sprite = SubResource("AtlasTexture_lwbyh")
+stackable = true
+count = 1
+placeable = true
+metadata/_custom_type_script = "uid://dde0u4wrgliw4"
 
 [resource]
 script = ExtResource("2_ad1ku")
 tool_type = 2
 multiplier = 4.0
 name = "Stone_Shovel"
+sprite = ExtResource("3_ad1ku")
 craftable = true
+recipe = Array[ExtResource("1_rdywh")]([SubResource("Resource_awxqo"), SubResource("Resource_qbxra")])
 craft_count = 1
 metadata/_custom_type_script = "uid://b8su1vseu30ab"
