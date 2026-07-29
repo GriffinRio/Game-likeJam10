@@ -148,7 +148,10 @@ func valid_placing_tile(mouse_tile : Vector2i) -> bool:
 		if(ray_cast_2d.is_colliding()):
 			return false
 		else:
-			return true
+			if(mouse_tile in tilemap_position()):
+				return false
+			else:
+				return true
 	else:
 		return false
 	
@@ -160,7 +163,7 @@ func tilemap_position() -> Array[Vector2i]:
 	var height_sign : int = 1
 	for i in range(2):
 		for j in range(2):
-			#corners.append(Tile_Map.map_coord(Vector2(collision_position.x + (RADIUS_X * radius_sign), collision_position.y + (RADIUS_Y * height_sign))))
+			corners.append(Tile_Map.map_coord(Vector2(collision_position.x + (RADIUS_X * radius_sign), collision_position.y + (RADIUS_Y * height_sign))))
 			radius_sign *= -1
 		height_sign = -1
 		radius_sign = 1
