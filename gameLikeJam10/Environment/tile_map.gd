@@ -44,7 +44,7 @@ func place_block(tile_position : Vector2i, block : Vector2i) -> void:
 	if(tile_layer.get_cell_atlas_coords(tile_position) == EMPTY_TILE):
 		tile_layer.set_cell(tile_position, 1, block)
 		var placed : Block = tile_layer.get_cell_tile_data(tile_position).get_custom_data("block_data")
-		EventBus.take_player_item.emit(placed.drop)
+		EventBus.take_player_item.emit(placed.drop, 1)
 	else:
 		push_error("Tile already full")
 
@@ -54,6 +54,6 @@ func destroy_block(tile_position : Vector2i, give_drop : bool) -> void:
 		var block: Block = tile_layer.get_cell_tile_data(tile_position).get_custom_data("block_data")
 		tile_layer.set_cell(tile_position, -1, EMPTY_TILE)
 		if(give_drop):
-			EventBus.give_player_item.emit(block.drop)
+			EventBus.give_player_item.emit(block.drop, 1)
 	else:
 		push_error("Tile doesn't exist")

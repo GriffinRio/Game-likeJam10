@@ -33,6 +33,7 @@ class_name Item
 		craftable = value
 		notify_property_list_changed()
 @export var recipe : Array[Item]
+@export var craft_count : int
 
 # Only shows count if stackable and block if placeable. 
 func _validate_property(property: Dictionary) -> void:

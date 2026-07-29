@@ -124,12 +124,12 @@ func get_equipped() -> Item:
 	return inventory.get_item(equipped)
 
 ## Adds given item to player inventory
-func pickup_item(item : Item) -> void:
-	inventory.gain_item(item)
+func pickup_item(item : Item, count : int) -> void:
+	inventory.gain_item(item, count)
 	
 ## Removes given item from player inventory
-func drop_item(item : Item) -> void:
-	inventory.lose_item(item)
+func drop_item(item : Item, count : int) -> void:
+	inventory.lose_item(item, count)
 
 func valid_tile_to_mine(mouse_tile : Vector2i) -> bool:
 	if(ray_cast_2d.is_colliding() and ray_cast_2d.target_position.length() <= MINING_DISTANCE):
