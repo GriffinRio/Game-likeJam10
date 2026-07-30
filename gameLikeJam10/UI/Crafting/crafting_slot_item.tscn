@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://daiy6bh2s3g1h"]
 
-[ext_resource type="Script" uid="uid://c4r0iihvxpeaq" path="res://UI/crafting_slot_item.gd" id="1_picr3"]
+[ext_resource type="Script" uid="uid://c4r0iihvxpeaq" path="res://UI/Crafting/crafting_slot_item.gd" id="1_picr3"]
 
 [node name="CraftingSlotItem" type="Control" unique_id=1272586905]
 custom_minimum_size = Vector2(16, 15)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cq0ahleetsyo4"]
 
-[ext_resource type="Script" uid="uid://choobli5v57dx" path="res://UI/crafting_slot.gd" id="1_tcatj"]
+[ext_resource type="Script" uid="uid://choobli5v57dx" path="res://UI/Crafting/crafting_slot.gd" id="1_tcatj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tcatj"]
 font_size = 6

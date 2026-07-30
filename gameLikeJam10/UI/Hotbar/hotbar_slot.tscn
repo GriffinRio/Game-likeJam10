@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c2ef4aww0l04u"]
 
-[ext_resource type="Script" uid="uid://ddy40o0j1kgig" path="res://UI/hotbar_slot.gd" id="1_jsmf4"]
+[ext_resource type="Script" uid="uid://ddy40o0j1kgig" path="res://UI/Hotbar/hotbar_slot.gd" id="1_jsmf4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsmf4"]
 resource_local_to_scene = true

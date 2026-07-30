@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnp8py6gtxupb"]
 
-[ext_resource type="Script" uid="uid://tbhhsehqpq5m" path="res://UI/crafting.gd" id="1_5k162"]
+[ext_resource type="Script" uid="uid://tbhhsehqpq5m" path="res://UI/Crafting/crafting.gd" id="1_5k162"]
 [ext_resource type="Script" uid="uid://dde0u4wrgliw4" path="res://Resources/Templates/item.gd" id="2_6svqq"]
 [ext_resource type="Resource" uid="uid://blxs2xi6m6w65" path="res://Resources/Items/stick.tres" id="3_3f05y"]
 [ext_resource type="Resource" uid="uid://db2bihgb0hr2a" path="res://Resources/Items/ItemTools/wood_pick.tres" id="4_yc12a"]
