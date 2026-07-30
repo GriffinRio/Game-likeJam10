@@ -42,6 +42,13 @@ enabled=PackedStringArray("res://addons/AutoKey_SpriteFrames/plugin.cfg", "res:/
 
 Interactable=""
 
+[importer_defaults]
+
+wav={
+&"edit/loop_mode": 1,
+&"edit/trim": true
+}
+
 [input]
 
 Move_Left={

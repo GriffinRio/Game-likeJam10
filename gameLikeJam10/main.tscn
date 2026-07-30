@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://7qd7geulx4t0" path="res://Assets/Art/EndAnimation/endingscene4.png" id="11_cegan"]
 [ext_resource type="Texture2D" uid="uid://ddr0yrglp2ymc" path="res://Assets/Art/BigFuckingWormAnimated.png" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://bbkfqw1q3hnam" path="res://Assets/Art/EndAnimation/endingscene5.png" id="12_82xsv"]
+[ext_resource type="AudioStream" uid="uid://cb4faxct7lyec" path="res://Assets/Audio/footstep grass and leaves 2.wav" id="17_yaehf"]
 
 [sub_resource type="Gradient" id="Gradient_dg77c"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -208,6 +209,9 @@ follow_viewport_enabled = true
 
 [node name="Breaking" parent="WorldUI" unique_id=1303803340 instance=ExtResource("5_lquwl")]
 metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1495614475]
+stream = ExtResource("17_yaehf")
 
 [connection signal="start_mining" from="Player" to="." method="_on_player_start_mining"]
 [connection signal="body_entered" from="EndTrigger" to="." method="_on_end_trigger_body_entered"]

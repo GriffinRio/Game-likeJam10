@@ -20,6 +20,7 @@ var RADIUS_X : float
 @onready var area_2d: Area2D = $Area2D
 @onready var tool: Sprite2D = $AnimatedSprite2D/ToolPivot/Tool
 @onready var tool_pivot: Node2D = $AnimatedSprite2D/ToolPivot
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var is_mining : bool
 var tile_being_mined : Vector2i
