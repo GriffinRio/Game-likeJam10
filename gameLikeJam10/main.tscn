@@ -7,10 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://ci1r1205qqwnk" path="res://UI/breaking.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://p3i034erovwe" path="res://Environment/space_ship.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://dnp8py6gtxupb" path="res://UI/crafting.tscn" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://tusp2egk0jgm" path="res://Assets/Art/EndAnimation/endingscene1.png" id="8_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://bu6d2d4n0lcxb" path="res://Assets/Art/BackgroundLayer_1.png" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://da7c7q0cesxir" path="res://Assets/Art/EndAnimation/endingscene2.png" id="9_yaehf"]
 [ext_resource type="Texture2D" uid="uid://drdlmnwyothnc" path="res://Assets/Art/BackgroundLayer_3.png" id="10_4c57u"]
+[ext_resource type="Texture2D" uid="uid://djn3xthn0yp5h" path="res://Assets/Art/EndAnimation/endingscene3.png" id="10_074og"]
 [ext_resource type="Texture2D" uid="uid://dh6d72wrcwynf" path="res://Assets/Art/smoke.png" id="10_efxa6"]
+[ext_resource type="Texture2D" uid="uid://7qd7geulx4t0" path="res://Assets/Art/EndAnimation/endingscene4.png" id="11_cegan"]
 [ext_resource type="Texture2D" uid="uid://ddr0yrglp2ymc" path="res://Assets/Art/BigFuckingWormAnimated.png" id="11_efxa6"]
+[ext_resource type="Texture2D" uid="uid://bbkfqw1q3hnam" path="res://Assets/Art/EndAnimation/endingscene5.png" id="12_82xsv"]
 
 [sub_resource type="Gradient" id="Gradient_dg77c"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -67,6 +72,32 @@ distance = -193.0
 normal = Vector2(-1, 0)
 distance = -817.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cqfq"]
+size = Vector2(200, 125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_getpj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2cqfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yaehf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_074og")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cegan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_82xsv")
+}],
+"loop": false,
+"name": &"End",
+"speed": 0.5
+}]
+
 [node name="Main" type="Node2D" unique_id=1355193467]
 script = ExtResource("1_h2yge")
 
@@ -79,35 +110,6 @@ position = Vector2(34, -11)
 [node name="SpaceShip" parent="." unique_id=227148207 instance=ExtResource("6_7mycd")]
 z_index = -1
 position = Vector2(312, 264)
-
-[node name="WorldUI" type="CanvasLayer" parent="." unique_id=1472346036]
-layer = 5
-follow_viewport_enabled = true
-
-[node name="Breaking" parent="WorldUI" unique_id=1303803340 instance=ExtResource("5_lquwl")]
-metadata/_edit_use_anchors_ = true
-
-[node name="CameraUI" type="CanvasLayer" parent="." unique_id=399838894]
-layer = 10
-
-[node name="Hotbar" parent="CameraUI" unique_id=1187527943 instance=ExtResource("4_1bvp3")]
-offset_left = 142.0
-offset_top = 300.0
-offset_right = 498.0
-offset_bottom = 336.0
-
-[node name="Crafting" parent="CameraUI" unique_id=1377148634 instance=ExtResource("7_272bh")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -50.0
-offset_right = 128.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=457185960]
 texture_filter = 1
@@ -164,4 +166,48 @@ shape = SubResource("WorldBoundaryShape2D_ycdy4")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=642435039]
 shape = SubResource("WorldBoundaryShape2D_w48qg")
 
+[node name="EndTrigger" type="Area2D" parent="." unique_id=390941505]
+position = Vector2(148, -101)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndTrigger" unique_id=247103524]
+position = Vector2(93, -51)
+shape = SubResource("RectangleShape2D_2cqfq")
+
+[node name="CameraUI" type="CanvasLayer" parent="." unique_id=399838894]
+layer = 10
+
+[node name="Hotbar" parent="CameraUI" unique_id=1187527943 instance=ExtResource("4_1bvp3")]
+offset_left = 142.0
+offset_top = 300.0
+offset_right = 498.0
+offset_bottom = 336.0
+
+[node name="Crafting" parent="CameraUI" unique_id=1377148634 instance=ExtResource("7_272bh")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -50.0
+offset_right = 128.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndAnimation" type="AnimatedSprite2D" parent="CameraUI" unique_id=1785508914]
+visible = false
+position = Vector2(320, 180)
+sprite_frames = SubResource("SpriteFrames_getpj")
+animation = &"End"
+
+[node name="WorldUI" type="CanvasLayer" parent="." unique_id=1472346036]
+layer = 5
+follow_viewport_enabled = true
+
+[node name="Breaking" parent="WorldUI" unique_id=1303803340 instance=ExtResource("5_lquwl")]
+metadata/_edit_use_anchors_ = true
+
 [connection signal="start_mining" from="Player" to="." method="_on_player_start_mining"]
+[connection signal="body_entered" from="EndTrigger" to="." method="_on_end_trigger_body_entered"]

@@ -58,7 +58,6 @@ func _process(delta: float) -> void:
 				EventBus.player_place_block.emit(mouse_tile, to_place.block)
 			else:
 				push_warning("No block to place")
-	
 
 # Handles player movement
 func _physics_process(delta: float) -> void:
