@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Block" format=3 uid="uid://b6qjroaj8kdb5"]
+
+[ext_resource type="Script" uid="uid://b8su1vseu30ab" path="res://Resources/Templates/item_tools.gd" id="1_se6q6"]
+[ext_resource type="Script" uid="uid://dxhlyg6lcklxi" path="res://Resources/Templates/block.gd" id="2_r4vsk"]
+
+[resource]
+script = ExtResource("2_r4vsk")
+name = "Leaf"
+tool_type = 1
+hardness = 0.2
+metadata/_custom_type_script = "uid://dxhlyg6lcklxi"

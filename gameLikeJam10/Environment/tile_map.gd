@@ -53,7 +53,7 @@ func destroy_block(tile_position : Vector2i, give_drop : bool) -> void:
 	if(tile_layer.get_cell_atlas_coords(tile_position) != EMPTY_TILE):
 		var block: Block = tile_layer.get_cell_tile_data(tile_position).get_custom_data("block_data")
 		tile_layer.set_cell(tile_position, -1, EMPTY_TILE)
-		if(give_drop):
+		if(give_drop and block.drop != null):
 			EventBus.give_player_item.emit(block.drop, 1)
 	else:
 		push_error("Tile doesn't exist")

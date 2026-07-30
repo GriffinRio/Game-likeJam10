@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://dnsagw4aa1e6q" path="res://Resources/Blocks/wood_block.tres" id="3_anah5"]
 [ext_resource type="Resource" uid="uid://d0qwmkc6e4rc8" path="res://Resources/Blocks/dirt_block.tres" id="4_qtlnl"]
 [ext_resource type="Resource" uid="uid://bxcj5ufu3wfmg" path="res://Resources/Blocks/iron_block.tres" id="5_2cfip"]
+[ext_resource type="Resource" uid="uid://b6qjroaj8kdb5" path="res://Resources/Blocks/leaf_block.tres" id="6_t8slr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dr34"]
 texture = ExtResource("2_0aub0")
@@ -24,8 +25,12 @@ texture_region_size = Vector2i(24, 24)
 1:1/0/custom_data_0 = ExtResource("5_2cfip")
 2:0/0 = 0
 2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
+2:1/0/custom_data_0 = ExtResource("6_t8slr")
 3:0/0 = 0
 3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
+3:1/0/custom_data_0 = ExtResource("6_t8slr")
 
 [sub_resource type="TileSet" id="TileSet_ew3cy"]
 tile_size = Vector2i(24, 24)
