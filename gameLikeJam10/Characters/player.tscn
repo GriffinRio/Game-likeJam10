@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://drsde1w8uxb1y" path="res://Characters/inventory.gd" id="2_eovys"]
 [ext_resource type="Texture2D" uid="uid://dxc7kjcubb3yo" path="res://Assets/Art/Player_Mine.png" id="3_65n15"]
 [ext_resource type="Texture2D" uid="uid://byhcuy2y4a85c" path="res://Assets/Art/Player_Walk.png" id="3_vb825"]
-[ext_resource type="Texture2D" uid="uid://dubsi8j0tqoqm" path="res://Assets/Art/Items/IronPick.png" id="5_l48on"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65n15"]
 size = Vector2(17, 39)
@@ -89,6 +88,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_65n15"]
+
 [sub_resource type="Animation" id="Animation_65n15"]
 length = 0.2
 loop_mode = 1
@@ -116,6 +117,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/ToolPivot/Tool:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(10, 11)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D/ToolPivot/Tool:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707964]
 }
 
 [sub_resource type="Animation" id="Animation_l48on"]
@@ -149,19 +174,19 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Tool:position")
+tracks/2/path = NodePath("AnimatedSprite2D/ToolPivot/Tool:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(9.5, -8.002284), Vector2(9.5, -6.9956856), Vector2(-1.9844689, -26.50512), Vector2(-1.9844689, -25.484337)]
+"values": [Vector2(10, 10), Vector2(10, 11), Vector2(-2, -9), Vector2(-2, -8)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tool:rotation")
+tracks/3/path = NodePath("AnimatedSprite2D/ToolPivot/Tool:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -199,25 +224,49 @@ tracks/1/keys = {
 "update": 0,
 "values": [0, 1, 2, 3]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/ToolPivot/Tool:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(10, 12), Vector2(10, 11), Vector2(10, 12), Vector2(10, 11)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D/ToolPivot/Tool:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707964]
+}
 
 [sub_resource type="Animation" id="Animation_p728j"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Tool:position")
+tracks/0/path = NodePath("AnimatedSprite2D/ToolPivot/Tool:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(9.500059, -7.0018425)]
+"values": [Vector2(10, 12)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tool:rotation")
+tracks/1/path = NodePath("AnimatedSprite2D/ToolPivot/Tool:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -275,10 +324,6 @@ states/Player_Mine/node = SubResource("AnimationNodeAnimation_65n15")
 states/Player_Mine/position = Vector2(649, 100)
 transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_642pg"), "Move", "Player_Mine", SubResource("AnimationNodeStateMachineTransition_l48on"), "Player_Mine", "Move", SubResource("AnimationNodeStateMachineTransition_4m0gv")]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cbmiu"]
-atlas = ExtResource("5_l48on")
-region = Rect2(0, 0, 32, 19)
-
 [node name="Player" type="CharacterBody2D" unique_id=345442620]
 z_index = 1
 collision_mask = 2
@@ -310,6 +355,14 @@ sprite_frames = SubResource("SpriteFrames_65n15")
 animation = &"Player_Idle"
 autoplay = "Player_Walk"
 
+[node name="ToolPivot" type="Node2D" parent="AnimatedSprite2D" unique_id=789756688]
+position = Vector2(0, 6)
+
+[node name="Tool" type="Sprite2D" parent="AnimatedSprite2D/ToolPivot" unique_id=232939968]
+position = Vector2(10, 12)
+rotation = 1.5707964
+texture = SubResource("AtlasTexture_65n15")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1364681831]
 libraries/ = SubResource("AnimationLibrary_p728j")
 
@@ -318,8 +371,3 @@ tree_root = SubResource("AnimationNodeStateMachine_q6x5r")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Move/blend_position = 0.0
-
-[node name="Tool" type="Sprite2D" parent="." unique_id=232939968]
-position = Vector2(9.500059, -7.0018425)
-rotation = 1.5707964
-texture = SubResource("AtlasTexture_cbmiu")

@@ -18,6 +18,8 @@ var RADIUS_X : float
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var area_2d: Area2D = $Area2D
+@onready var tool: Sprite2D = $AnimatedSprite2D/ToolPivot/Tool
+@onready var tool_pivot: Node2D = $AnimatedSprite2D/ToolPivot
 
 var is_mining : bool
 var tile_being_mined : Vector2i
@@ -70,11 +72,10 @@ func _physics_process(delta: float) -> void:
 		# Get the input direction and handle the movement/deceleration and animation.
 		var direction := Input.get_axis("Move_Left", "Move_Right")
 		animation_tree.set("parameters/Move/blend_position", direction)
-		# animation_tree.set("parameters/conditions/is_mining", is_mining)
-		# animation_tree.set("parameters/conditions/!is_mining", !is_mining)
 		
 		if direction:
 			_animated_sprite.flip_h = (direction < 0)
+			tool_pivot.scale.x = direction
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -117,9 +118,17 @@ func _input(event: InputEvent) -> void:
 func change_equipped(index : int) -> void:
 	equipped = (index + inventory.SIZE) % inventory.SIZE
 	EventBus.player_equipped_changed.emit(equipped)
+	var item : Item = get_equipped()
+	if(item is ItemTools):
+		var atlas : AtlasTexture = tool.texture
+		atlas.atlas = item.sprite
+		atlas.region = Rect2(0,0,32.0,20.0)
+	else:
+		var atlas : AtlasTexture = null
 	if(is_mining):
 		EventBus.player_stop_mining.emit()
-		start_mining.emit(tile_being_mined, get_equipped())
+		start_mining.emit(tile_being_mined, item)
+	
 
 func get_equipped() -> Item:
 	return inventory.get_item(equipped)
