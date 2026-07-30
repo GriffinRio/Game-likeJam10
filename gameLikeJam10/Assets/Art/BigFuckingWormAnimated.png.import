@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbjyavgj6vo60"
-path="res://.godot/imported/BigFuckingWorm.png-dc4ddae9a1c48ace8803884a4c8f0c7f.ctex"
+uid="uid://ddr0yrglp2ymc"
+path="res://.godot/imported/BigFuckingWormAnimated.png-2fba3700a908dc1409d16972a2d68873.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/BigFuckingWorm.png"
-dest_files=["res://.godot/imported/BigFuckingWorm.png-dc4ddae9a1c48ace8803884a4c8f0c7f.ctex"]
+source_file="res://Assets/Art/BigFuckingWormAnimated.png"
+dest_files=["res://.godot/imported/BigFuckingWormAnimated.png-2fba3700a908dc1409d16972a2d68873.ctex"]
 
 [params]
 
