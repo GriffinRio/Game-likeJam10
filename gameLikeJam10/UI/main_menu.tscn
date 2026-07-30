@@ -26,4 +26,17 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Start"
 
+[node name="Label" type="Label" parent="." unique_id=1831003146]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 73.0
+offset_right = 36.0
+offset_bottom = 96.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "Dinky Stinky and The Big Worm"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
