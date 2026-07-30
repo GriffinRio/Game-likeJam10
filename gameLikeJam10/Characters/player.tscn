@@ -307,15 +307,13 @@ collision_mask = 2
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=305023575]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_65n15")
-animation = &"Player_Mine"
+animation = &"Player_Idle"
 autoplay = "Player_Walk"
-frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1364681831]
 libraries/ = SubResource("AnimationLibrary_p728j")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1126929104]
-process_mode = 4
 tree_root = SubResource("AnimationNodeStateMachine_q6x5r")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
