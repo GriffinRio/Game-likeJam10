@@ -347,7 +347,7 @@ shape = SubResource("RectangleShape2D_l48on")
 script = ExtResource("2_eovys")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=357129865]
-collision_mask = 2
+collision_mask = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=305023575]
 position = Vector2(0, -24)
