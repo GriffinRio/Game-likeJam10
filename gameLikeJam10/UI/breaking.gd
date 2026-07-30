@@ -2,14 +2,12 @@ extends Control
 class_name Breaking
 
 const DEFAULT_SPEED : float = 1.0
-@onready var DEBUG_label: Label = $DEBUG_Label
 @onready var breaking_animation: AnimatedSprite2D = $BreakingAnimation
 
 var give_drop : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	DEBUG_label.text = ""
 	reset_break()
 	EventBus.player_stop_mining.connect(reset_break)
 	give_drop = false
@@ -20,7 +18,6 @@ func _process(delta: float) -> void:
 	
 func update_position(mouse_position : Vector2i) -> void: 
 	position = Tile_Map.local_coord(mouse_position)
-	DEBUG_label.text = str(mouse_position)
 
 func begin_break(block : Block, equipped : Item) -> void:
 	var break_time : float = block.hardness

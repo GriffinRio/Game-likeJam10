@@ -3,10 +3,6 @@
 [ext_resource type="Script" uid="uid://uw84mahxw5dm" path="res://UI/breaking.gd" id="1_x3h2j"]
 [ext_resource type="Texture2D" uid="uid://5a6h3xll2qui" path="res://Assets/Art/minecraft_block_breaking.png" id="2_5aymv"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_anydf"]
-font_size = 5
-font_color = Color(1, 0, 0, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ccdl"]
 atlas = ExtResource("2_5aymv")
 region = Rect2(0, 0, 24, 24)
@@ -70,12 +66,6 @@ anchors_preset = 0
 offset_right = 24.0
 offset_bottom = 24.0
 script = ExtResource("1_x3h2j")
-
-[node name="DEBUG_Label" type="Label" parent="." unique_id=1973751001]
-layout_mode = 1
-offset_right = 19.0
-offset_bottom = 7.0
-label_settings = SubResource("LabelSettings_anydf")
 
 [node name="BreakingAnimation" type="AnimatedSprite2D" parent="." unique_id=1149157191]
 position = Vector2(12, 12)
