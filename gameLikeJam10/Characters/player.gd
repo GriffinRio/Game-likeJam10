@@ -113,6 +113,10 @@ func _input(event: InputEvent) -> void:
 		else:
 			crafting = false
 			EventBus.crafting.emit(false, inventory.hotbar)
+	elif(event.is_action_pressed("Drop_Item")):
+		var item : Item = get_equipped()
+		if(item != null):
+			drop_item(item, 1)
 ## changes equipped
 func change_equipped(index : int) -> void:
 	equipped = (index + inventory.SIZE) % inventory.SIZE
@@ -122,13 +126,14 @@ func change_equipped(index : int) -> void:
 		var atlas : AtlasTexture = tool.texture
 		atlas.atlas = item.sprite
 		atlas.region = Rect2(0,0,32.0,20.0)
+		tool.visible = true
 	else:
 		var atlas : AtlasTexture = null
+		tool.visible = false
 	if(is_mining):
 		EventBus.player_stop_mining.emit()
 		start_mining.emit(tile_being_mined, item)
 	
-
 func get_equipped() -> Item:
 	return inventory.get_item(equipped)
 

@@ -14,10 +14,7 @@ func _ready() -> void:
 
 # Updates mouse_position
 func _process(delta: float) -> void:
-	
 	pass
-
-# TODO: Could change to just be global signals emmited between all these nodes, probably cleaner
 
 func _on_player_start_mining(tile_position: Vector2i, equipped: Item) -> void:
 	breaking.update_position(tile_position)
