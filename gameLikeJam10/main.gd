@@ -19,7 +19,8 @@ func _process(delta: float) -> void:
 func _on_player_start_mining(tile_position: Vector2i, equipped: Item) -> void:
 	breaking.update_position(tile_position)
 	var block : Block = tile_map.get_tile(tile_position)
-	breaking.begin_break(block, equipped)
+	if(block != null):
+		breaking.begin_break(block, equipped)
 	
 
 

@@ -36,7 +36,10 @@ func _ready() -> void:
 	EventBus.breaking_animation_finished.connect(destroy_block)
 
 func get_tile(tile_position : Vector2i) -> Block :
-	var block: Block = tile_layer.get_cell_tile_data(tile_position).get_custom_data("block_data")
+	var tile_data : TileData = tile_layer.get_cell_tile_data(tile_position)
+	var block: Block = null
+	if(tile_data != null):
+		block = tile_data.get_custom_data("block_data")
 	return block
 
 ## Makes sure block can be placed and then does so. Emits block_placed to remove block from player inventory
