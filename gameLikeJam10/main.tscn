@@ -38,7 +38,7 @@ layer = 10
 offset_left = 142.0
 offset_top = 300.0
 offset_right = 498.0
-offset_bottom = 350.0
+offset_bottom = 336.0
 
 [node name="Crafting" parent="CameraUI" unique_id=1377148634 instance=ExtResource("7_272bh")]
 anchors_preset = 8
