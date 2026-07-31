@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://7qd7geulx4t0" path="res://Assets/Art/EndAnimation/endingscene4.png" id="11_cegan"]
 [ext_resource type="Texture2D" uid="uid://ddr0yrglp2ymc" path="res://Assets/Art/BigFuckingWormAnimated.png" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://bbkfqw1q3hnam" path="res://Assets/Art/EndAnimation/endingscene5.png" id="12_82xsv"]
-[ext_resource type="AudioStream" uid="uid://cb4faxct7lyec" path="res://Assets/Audio/footstep grass and leaves 2.wav" id="17_yaehf"]
 [ext_resource type="AudioStream" uid="uid://b0b5rlgkaun47" path="res://Assets/Audio/780545__destructo20__gentle-subtle-guitar-background-noise-for-gamefilmtv-etc.wav" id="18_074og"]
 
 [sub_resource type="Gradient" id="Gradient_dg77c"]
@@ -210,9 +209,6 @@ follow_viewport_enabled = true
 
 [node name="Breaking" parent="WorldUI" unique_id=1303803340 instance=ExtResource("5_lquwl")]
 metadata/_edit_use_anchors_ = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1495614475]
-stream = ExtResource("17_yaehf")
 
 [node name="Bg_music" type="AudioStreamPlayer" parent="." unique_id=273306294]
 stream = ExtResource("18_074og")
