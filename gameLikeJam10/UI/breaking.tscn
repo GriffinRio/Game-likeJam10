@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://uw84mahxw5dm" path="res://UI/breaking.gd" id="1_x3h2j"]
 [ext_resource type="Texture2D" uid="uid://5a6h3xll2qui" path="res://Assets/Art/minecraft_block_breaking.png" id="2_5aymv"]
+[ext_resource type="AudioStream" uid="uid://c2agjxhscqlel" path="res://Assets/Audio/cereal crunch 1.wav" id="3_kua43"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ccdl"]
 atlas = ExtResource("2_5aymv")
@@ -60,6 +61,66 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mwuvh"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("3_kua43")
+
+[sub_resource type="Animation" id="Animation_864bt"]
+step = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BreakingAnimation:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"Breaking"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BreakingAnimation:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667, 0.8333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.09,
+"stream": SubResource("AudioStreamRandomizer_mwuvh")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.09,
+"stream": SubResource("AudioStreamRandomizer_mwuvh")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.09,
+"stream": SubResource("AudioStreamRandomizer_mwuvh")
+}],
+"times": PackedFloat32Array(0.1667, 0.5, 0.833)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kua43"]
+_data = {
+&"Breaking": SubResource("Animation_864bt")
+}
+
 [node name="Breaking" type="Control" unique_id=1303803340]
 layout_mode = 3
 anchors_preset = 0
@@ -72,4 +133,9 @@ position = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_x3h2j")
 animation = &"Breaking"
 
-[connection signal="animation_finished" from="BreakingAnimation" to="." method="_on_breaking_animation_animation_finished"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=691188079]
+libraries/ = SubResource("AnimationLibrary_kua43")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1946119160]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_breaking_animation_animation_finished"]

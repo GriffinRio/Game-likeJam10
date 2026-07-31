@@ -3,6 +3,7 @@ class_name Breaking
 
 const DEFAULT_SPEED : float = 1.0
 @onready var breaking_animation: AnimatedSprite2D = $BreakingAnimation
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var give_drop : bool
 
@@ -38,13 +39,16 @@ func begin_break(block : Block, equipped : Item) -> void:
 		else:
 			give_drop = false
 			break_time *= 5.0
-	breaking_animation.play("Breaking", 1/break_time)
+	#breaking_animation.play("Breaking", 1/break_time)
+	animation_player.play("Breaking", -1, 1/break_time)
 
 func reset_break() -> void:
-	breaking_animation.speed_scale = DEFAULT_SPEED
-	breaking_animation.stop()
-	breaking_animation.frame = 0
+	#breaking_animation.speed_scale = DEFAULT_SPEED
+	#breaking_animation.stop()
+	animation_player.stop()
+	#breaking_animation.frame = 0
 
-func _on_breaking_animation_animation_finished() -> void:
+func _on_breaking_animation_animation_finished(name :StringName) -> void:
+	print(name)
 	reset_break()
 	EventBus.breaking_animation_finished.emit(Tile_Map.map_coord(position), give_drop)

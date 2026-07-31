@@ -52,6 +52,28 @@ text = "Start"
 layout_mode = 2
 text = "Controls"
 
+[node name="PmdFrame(1)" type="Sprite2D" parent="." unique_id=1296852905]
+position = Vector2(349, 189)
+scale = Vector2(0.103645824, 0.1412037)
+texture = ExtResource("2_d8nwk")
+
+[node name="PmdBg(1)" type="Sprite2D" parent="." unique_id=300803888]
+z_index = -2
+position = Vector2(321.5, 185)
+scale = Vector2(0.070312485, 0.12777777)
+texture = ExtResource("3_4cwpn")
+
+[node name="BigFuckingWormCropped1" type="Sprite2D" parent="." unique_id=818078649]
+position = Vector2(556, 512)
+rotation = 0.02617994
+texture = ExtResource("4_4cwpn")
+
+[node name="StartScreen" type="Sprite2D" parent="." unique_id=208577476]
+z_index = -4
+texture_filter = 1
+position = Vector2(320, 179)
+texture = ExtResource("5_f40uw")
+
 [node name="Controls" type="Control" parent="." unique_id=963028258]
 visible = false
 layout_mode = 1
@@ -113,27 +135,6 @@ Place - M2
 Switch Item - NUMBERS or MOUSE WHEEL
 Interact - E
 Drop - Q"
-
-[node name="PmdFrame(1)" type="Sprite2D" parent="." unique_id=1296852905]
-position = Vector2(349, 189)
-scale = Vector2(0.103645824, 0.1412037)
-texture = ExtResource("2_d8nwk")
-
-[node name="PmdBg(1)" type="Sprite2D" parent="." unique_id=300803888]
-z_index = -2
-position = Vector2(321.5, 185)
-scale = Vector2(0.070312485, 0.12777777)
-texture = ExtResource("3_4cwpn")
-
-[node name="BigFuckingWormCropped1" type="Sprite2D" parent="." unique_id=818078649]
-position = Vector2(556, 512)
-rotation = 0.02617994
-texture = ExtResource("4_4cwpn")
-
-[node name="StartScreen" type="Sprite2D" parent="." unique_id=208577476]
-z_index = -4
-position = Vector2(320, 179)
-texture = ExtResource("5_f40uw")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Controls" to="." method="_on_controls_pressed"]
