@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ddr0yrglp2ymc" path="res://Assets/Art/BigFuckingWormAnimated.png" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://bbkfqw1q3hnam" path="res://Assets/Art/EndAnimation/endingscene5.png" id="12_82xsv"]
 [ext_resource type="AudioStream" uid="uid://cb4faxct7lyec" path="res://Assets/Audio/footstep grass and leaves 2.wav" id="17_yaehf"]
+[ext_resource type="AudioStream" uid="uid://b0b5rlgkaun47" path="res://Assets/Audio/780545__destructo20__gentle-subtle-guitar-background-noise-for-gamefilmtv-etc.wav" id="18_074og"]
 
 [sub_resource type="Gradient" id="Gradient_dg77c"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -212,6 +213,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1495614475]
 stream = ExtResource("17_yaehf")
+
+[node name="Bg_music" type="AudioStreamPlayer" parent="." unique_id=273306294]
+stream = ExtResource("18_074og")
+autoplay = true
 
 [connection signal="start_mining" from="Player" to="." method="_on_player_start_mining"]
 [connection signal="body_entered" from="EndTrigger" to="." method="_on_end_trigger_body_entered"]

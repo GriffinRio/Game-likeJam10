@@ -377,7 +377,7 @@ collision_mask = 10
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=305023575]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_65n15")
-animation = &"Player_Walk"
+animation = &"Player_Idle"
 autoplay = "Player_Walk"
 
 [node name="ToolPivot" type="Node2D" parent="AnimatedSprite2D" unique_id=789756688]

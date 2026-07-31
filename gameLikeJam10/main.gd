@@ -5,6 +5,7 @@ class_name Main
 @onready var player: Player = $Player
 @onready var breaking: Breaking = $WorldUI/Breaking
 @onready var end_animation: AnimatedSprite2D = $CameraUI/EndAnimation
+@onready var mining_sfx: AudioStreamPlayer = $AudioStreamPlayer_mine
 
 ## Constantly stores mouse position in tile_map terms
 

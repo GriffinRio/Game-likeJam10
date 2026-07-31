@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://d2eectbo0b8fi"]
 
 [ext_resource type="Script" uid="uid://c6rhr8x8oosma" path="res://UI/main_menu.gd" id="1_p8ccj"]
+[ext_resource type="Texture2D" uid="uid://bh65y61es5umf" path="res://Assets/Art/pmd_frame(1).png" id="2_d8nwk"]
+[ext_resource type="Texture2D" uid="uid://dm6p0owplhuif" path="res://Assets/Art/pmd_bg(1).png" id="3_4cwpn"]
+[ext_resource type="Texture2D" uid="uid://u0p2cr04twix" path="res://Assets/Art/BigFuckingWormCropped1.png" id="4_4cwpn"]
+[ext_resource type="Texture2D" uid="uid://chpnak7dyu4uf" path="res://Assets/Art/start screen.png" id="5_f40uw"]
 
 [node name="MainMenu" type="Control" unique_id=939465010]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p8ccj")
@@ -16,10 +22,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -35.0
-offset_top = 73.0
-offset_right = 36.0
-offset_bottom = 96.0
+offset_left = -187.0
+offset_top = 56.0
+offset_right = 190.0
+offset_bottom = 91.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 25
 text = "Dinky Stinky and The Big Worm"
@@ -107,6 +113,27 @@ Place - M2
 Switch Item - NUMBERS or MOUSE WHEEL
 Interact - E
 Drop - Q"
+
+[node name="PmdFrame(1)" type="Sprite2D" parent="." unique_id=1296852905]
+position = Vector2(349, 189)
+scale = Vector2(0.103645824, 0.1412037)
+texture = ExtResource("2_d8nwk")
+
+[node name="PmdBg(1)" type="Sprite2D" parent="." unique_id=300803888]
+z_index = -2
+position = Vector2(321.5, 185)
+scale = Vector2(0.070312485, 0.12777777)
+texture = ExtResource("3_4cwpn")
+
+[node name="BigFuckingWormCropped1" type="Sprite2D" parent="." unique_id=818078649]
+position = Vector2(556, 512)
+rotation = 0.02617994
+texture = ExtResource("4_4cwpn")
+
+[node name="StartScreen" type="Sprite2D" parent="." unique_id=208577476]
+z_index = -4
+position = Vector2(320, 179)
+texture = ExtResource("5_f40uw")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Controls" to="." method="_on_controls_pressed"]
