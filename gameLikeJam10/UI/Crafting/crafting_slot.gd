@@ -7,6 +7,7 @@ const CRAFTING_SLOT_ITEM = preload("uid://daiy6bh2s3g1h")
 @onready var label: Label = $Label
 @onready var v_box_container: VBoxContainer = $VBoxContainer
 @onready var button: Button = $Button
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var item : Item
 var slot_items : Array[CraftingSlotItem]
@@ -41,6 +42,7 @@ func update_recipe(inventory : Array[Item]) -> void:
 		
 
 func _on_button_pressed() -> void:
+	audio_stream_player_2d.play()
 	for need in item.recipe:
 		EventBus.take_player_item.emit(need, need.count)
 	EventBus.give_player_item.emit(item, item.craft_count)

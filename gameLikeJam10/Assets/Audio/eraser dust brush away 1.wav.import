@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dlgwn72tn8d54"
+path="res://.godot/imported/eraser dust brush away 1.wav-427e5d9dd1009ef6aed2f88d80c5c7f1.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/eraser dust brush away 1.wav"
+dest_files=["res://.godot/imported/eraser dust brush away 1.wav-427e5d9dd1009ef6aed2f88d80c5c7f1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop_mode=1
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
