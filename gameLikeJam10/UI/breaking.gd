@@ -43,12 +43,8 @@ func begin_break(block : Block, equipped : Item) -> void:
 	animation_player.play("Breaking", -1, 1/break_time)
 
 func reset_break() -> void:
-	#breaking_animation.speed_scale = DEFAULT_SPEED
-	#breaking_animation.stop()
 	animation_player.stop()
-	#breaking_animation.frame = 0
 
 func _on_breaking_animation_animation_finished(name :StringName) -> void:
-	print(name)
 	reset_break()
 	EventBus.breaking_animation_finished.emit(Tile_Map.map_coord(position), give_drop)
